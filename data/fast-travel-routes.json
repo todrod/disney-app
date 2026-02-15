@@ -1,0 +1,821 @@
+{
+  "nodes": [
+    {
+      "id": "magic-kingdom",
+      "name": "Magic Kingdom",
+      "type": "park",
+      "area": "theme-parks"
+    },
+    {
+      "id": "epcot",
+      "name": "EPCOT",
+      "type": "park",
+      "area": "theme-parks"
+    },
+    {
+      "id": "hollywood-studios",
+      "name": "Hollywood Studios",
+      "type": "park",
+      "area": "theme-parks"
+    },
+    {
+      "id": "animal-kingdom",
+      "name": "Animal Kingdom",
+      "type": "park",
+      "area": "theme-parks"
+    },
+    {
+      "id": "disney-springs",
+      "name": "Disney Springs",
+      "type": "entertainment",
+      "area": "disney-springs"
+    },
+    {
+      "id": "ttc",
+      "name": "Transportation and Ticket Center",
+      "type": "transport-hub",
+      "area": "resorts"
+    },
+    {
+      "id": "contemporary-resort",
+      "name": "Disney's Contemporary Resort",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "polynesian-resort",
+      "name": "Disney's Polynesian Resort",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "grand-floridian-resort",
+      "name": "Disney's Grand Floridian Resort",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "wilderness-lodge",
+      "name": "Disney's Wilderness Lodge",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "fort-wilderness",
+      "name": "Fort Wilderness Resort & Campground",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "caribbean-beach-resort",
+      "name": "Disney's Caribbean Beach Resort",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "rivera-resort",
+      "name": "Disney's Riviera Resort",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "boardwalk-resort",
+      "name": "Disney's BoardWalk Inn",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "yacht-club-resort",
+      "name": "Disney's Yacht Club Resort",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "beach-club-resort",
+      "name": "Disney's Beach Club Resort",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "swan-dolphin",
+      "name": "Swan & Dolphin Hotels",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "epcot-resort-area",
+      "name": "EPCOT Resorts Area",
+      "type": "transport-hub",
+      "area": "resorts"
+    },
+    {
+      "id": "animal-kingdom-lodge",
+      "name": "Disney's Animal Kingdom Lodge",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "all-star-resorts",
+      "name": "All-Star Resorts",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "pop-century-resort",
+      "name": "Disney's Pop Century Resort",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "art-of-animation",
+      "name": "Disney's Art of Animation Resort",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "coronado-springs",
+      "name": "Disney's Coronado Springs Resort",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "caribbean-skyliner-station",
+      "name": "Caribbean Beach Skyliner Station",
+      "type": "skyliner-station",
+      "area": "transportation"
+    },
+    {
+      "id": "riviera-skyliner-station",
+      "name": "Riviera Resort Skyliner Station",
+      "type": "skyliner-station",
+      "area": "transportation"
+    },
+    {
+      "id": "epcot-international-gateway",
+      "name": "EPCOT International Gateway",
+      "type": "park-entrance",
+      "area": "transportation"
+    },
+    {
+      "id": "hollywood-studios-skyliner-station",
+      "name": "Hollywood Studios Skyliner Station",
+      "type": "skyliner-station",
+      "area": "transportation"
+    },
+    {
+      "id": "magic-kingdom-entrance",
+      "name": "Magic Kingdom Entrance",
+      "type": "park-entrance",
+      "area": "transportation"
+    },
+    {
+      "id": "epcot-entrance",
+      "name": "EPCOT Main Entrance",
+      "type": "park-entrance",
+      "area": "transportation"
+    },
+    {
+      "id": "hollywood-studios-entrance",
+      "name": "Hollywood Studios Entrance",
+      "type": "park-entrance",
+      "area": "transportation"
+    },
+    {
+      "id": "animal-kingdom-entrance",
+      "name": "Animal Kingdom Entrance",
+      "type": "park-entrance",
+      "area": "transportation"
+    },
+    {
+      "id": "port-orleans-riverside",
+      "name": "Disney's Port Orleans Resort - Riverside",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "port-orleans-french-quarter",
+      "name": "Disney's Port Orleans Resort - French Quarter",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "old-key-west",
+      "name": "Disney's Old Key West Resort",
+      "type": "resort",
+      "area": "resorts"
+    },
+    {
+      "id": "saratoga-springs",
+      "name": "Disney's Saratoga Springs Resort",
+      "type": "resort",
+      "area": "resorts"
+    }
+  ],
+  "edges": [
+    {
+      "from": "ttc",
+      "to": "magic-kingdom",
+      "mode": "monorail",
+      "time": 10,
+      "steps": [
+        "Walk to TTC Monorail Station",
+        "Board Express Monorail",
+        "Ride to Magic Kingdom"
+      ]
+    },
+    {
+      "from": "magic-kingdom",
+      "to": "ttc",
+      "mode": "monorail",
+      "time": 10,
+      "steps": [
+        "Board Express Monorail at Magic Kingdom",
+        "Ride to TTC"
+      ]
+    },
+    {
+      "from": "contemporary-resort",
+      "to": "magic-kingdom",
+      "mode": "walking",
+      "time": 10,
+      "steps": [
+        "Walk from Contemporary Resort",
+        "Follow pedestrian path to Magic Kingdom entrance",
+        "Arrive at Magic Kingdom"
+      ]
+    },
+    {
+      "from": "magic-kingdom",
+      "to": "contemporary-resort",
+      "mode": "walking",
+      "time": 10,
+      "steps": [
+        "Exit Magic Kingdom",
+        "Follow pedestrian path to Contemporary Resort"
+      ]
+    },
+    {
+      "from": "ttc",
+      "to": "epcot",
+      "mode": "monorail",
+      "time": 20,
+      "steps": [
+        "Board EPCOT Monorail at TTC",
+        "Ride to EPCOT"
+      ]
+    },
+    {
+      "from": "epcot",
+      "to": "ttc",
+      "mode": "monorail",
+      "time": 20,
+      "steps": [
+        "Board Monorail at EPCOT",
+        "Ride to TTC"
+      ]
+    },
+    {
+      "from": "magic-kingdom",
+      "to": "epcot",
+      "mode": "monorail",
+      "time": 30,
+      "transfer": "ttc",
+      "steps": [
+        "Board Express Monorail at Magic Kingdom",
+        "Transfer at TTC to EPCOT Monorail",
+        "Ride to EPCOT"
+      ]
+    },
+    {
+      "from": "epcot",
+      "to": "magic-kingdom",
+      "mode": "monorail",
+      "time": 30,
+      "transfer": "ttc",
+      "steps": [
+        "Board Monorail at EPCOT",
+        "Transfer at TTC to Express Monorail",
+        "Ride to Magic Kingdom"
+      ]
+    },
+    {
+      "from": "caribbean-skyliner-station",
+      "to": "epcot-international-gateway",
+      "mode": "skyliner",
+      "time": 15,
+      "steps": [
+        "Board Skyliner at Caribbean Beach",
+        "Transfer at Riviera Resort",
+        "Continue to EPCOT International Gateway"
+      ]
+    },
+    {
+      "from": "epcot-international-gateway",
+      "to": "caribbean-skyliner-station",
+      "mode": "skyliner",
+      "time": 15,
+      "steps": [
+        "Board Skyliner at EPCOT International Gateway",
+        "Transfer at Riviera Resort",
+        "Continue to Caribbean Beach"
+      ]
+    },
+    {
+      "from": "caribbean-skyliner-station",
+      "to": "hollywood-studios-skyliner-station",
+      "mode": "skyliner",
+      "time": 10,
+      "steps": [
+        "Board Skyliner at Caribbean Beach",
+        "Ride directly to Hollywood Studios"
+      ]
+    },
+    {
+      "from": "hollywood-studios-skyliner-station",
+      "to": "caribbean-skyliner-station",
+      "mode": "skyliner",
+      "time": 10,
+      "steps": [
+        "Board Skyliner at Hollywood Studios",
+        "Ride directly to Caribbean Beach"
+      ]
+    },
+    {
+      "from": "caribbean-beach-resort",
+      "to": "caribbean-skyliner-station",
+      "mode": "walking",
+      "time": 10,
+      "steps": [
+        "Walk from Caribbean Beach Resort",
+        "Follow signs to Skyliner Station"
+      ]
+    },
+    {
+      "from": "riviera-resort",
+      "to": "epcot-international-gateway",
+      "mode": "skyliner",
+      "time": 5,
+      "steps": [
+        "Board Skyliner at Riviera Resort",
+        "Ride to EPCOT International Gateway"
+      ]
+    },
+    {
+      "from": "epcot-international-gateway",
+      "to": "riviera-resort",
+      "mode": "skyliner",
+      "time": 5,
+      "steps": [
+        "Board Skyliner at EPCOT International Gateway",
+        "Ride to Riviera Resort"
+      ]
+    },
+    {
+      "from": "caribbean-skyliner-station",
+      "to": "epcot",
+      "mode": "skyliner",
+      "time": 20,
+      "steps": [
+        "Board Skyliner at Caribbean Beach",
+        "Transfer at Riviera Resort",
+        "Continue to EPCOT International Gateway",
+        "Enter EPCOT at International Gateway"
+      ]
+    },
+    {
+      "from": "epcot",
+      "to": "caribbean-skyliner-station",
+      "mode": "skyliner",
+      "time": 20,
+      "steps": [
+        "Exit EPCOT at International Gateway",
+        "Board Skyliner",
+        "Transfer at Riviera Resort",
+        "Continue to Caribbean Beach"
+      ]
+    },
+    {
+      "from": "caribbean-skyliner-station",
+      "to": "hollywood-studios",
+      "mode": "skyliner",
+      "time": 15,
+      "steps": [
+        "Board Skyliner at Caribbean Beach",
+        "Ride directly to Hollywood Studios",
+        "Enter park"
+      ]
+    },
+    {
+      "from": "hollywood-studios",
+      "to": "caribbean-skyliner-station",
+      "mode": "skyliner",
+      "time": 15,
+      "steps": [
+        "Exit Hollywood Studios",
+        "Board Skyliner",
+        "Ride to Caribbean Beach"
+      ]
+    },
+    {
+      "from": "epcot-international-gateway",
+      "to": "boardwalk-resort",
+      "mode": "walking",
+      "time": 5,
+      "steps": [
+        "Exit EPCOT at International Gateway",
+        "Walk to BoardWalk Inn"
+      ]
+    },
+    {
+      "from": "boardwalk-resort",
+      "to": "epcot-international-gateway",
+      "mode": "walking",
+      "time": 5,
+      "steps": [
+        "Walk from BoardWalk Inn",
+        "Enter EPCOT at International Gateway"
+      ]
+    },
+    {
+      "from": "boardwalk-resort",
+      "to": "hollywood-studios",
+      "mode": "walking",
+      "time": 15,
+      "steps": [
+        "Walk from BoardWalk Inn",
+        "Follow path to Hollywood Studios",
+        "Arrive at Hollywood Studios entrance"
+      ]
+    },
+    {
+      "from": "hollywood-studios",
+      "to": "boardwalk-resort",
+      "mode": "walking",
+      "time": 15,
+      "steps": [
+        "Exit Hollywood Studios",
+        "Follow path to BoardWalk Inn"
+      ]
+    },
+    {
+      "from": "disney-springs",
+      "to": "port-orleans-riverside",
+      "mode": "boat",
+      "time": 25,
+      "steps": [
+        "Board boat at Disney Springs",
+        "Ride to Port Orleans Riverside"
+      ]
+    },
+    {
+      "from": "port-orleans-riverside",
+      "to": "disney-springs",
+      "mode": "boat",
+      "time": 25,
+      "steps": [
+        "Board boat at Port Orleans Riverside",
+        "Ride to Disney Springs"
+      ]
+    },
+    {
+      "from": "disney-springs",
+      "to": "port-orleans-french-quarter",
+      "mode": "boat",
+      "time": 20,
+      "steps": [
+        "Board boat at Disney Springs",
+        "Ride to Port Orleans French Quarter"
+      ]
+    },
+    {
+      "from": "port-orleans-french-quarter",
+      "to": "disney-springs",
+      "mode": "boat",
+      "time": 20,
+      "steps": [
+        "Board boat at Port Orleans French Quarter",
+        "Ride to Disney Springs"
+      ]
+    },
+    {
+      "from": "old-key-west",
+      "to": "disney-springs",
+      "mode": "boat",
+      "time": 15,
+      "steps": [
+        "Board boat at Old Key West",
+        "Ride to Disney Springs"
+      ]
+    },
+    {
+      "from": "disney-springs",
+      "to": "old-key-west",
+      "mode": "boat",
+      "time": 15,
+      "steps": [
+        "Board boat at Disney Springs",
+        "Ride to Old Key West"
+      ]
+    },
+    {
+      "from": "saratoga-springs",
+      "to": "disney-springs",
+      "mode": "walking",
+      "time": 15,
+      "steps": [
+        "Walk from Saratoga Springs",
+        "Follow path to Disney Springs"
+      ]
+    },
+    {
+      "from": "disney-springs",
+      "to": "saratoga-springs",
+      "mode": "walking",
+      "time": 15,
+      "steps": [
+        "Walk from Disney Springs",
+        "Follow path to Saratoga Springs"
+      ]
+    },
+    {
+      "from": "animal-kingdom",
+      "to": "animal-kingdom-lodge",
+      "mode": "bus",
+      "time": 10,
+      "steps": [
+        "Board Animal Kingdom Lodge bus at Animal Kingdom",
+        "Ride to Animal Kingdom Lodge"
+      ]
+    },
+    {
+      "from": "animal-kingdom-lodge",
+      "to": "animal-kingdom",
+      "mode": "bus",
+      "time": 10,
+      "steps": [
+        "Board Animal Kingdom bus at Animal Kingdom Lodge",
+        "Ride to Animal Kingdom"
+      ]
+    },
+    {
+      "from": "contemporary-resort",
+      "to": "polynesian-resort",
+      "mode": "monorail",
+      "time": 10,
+      "steps": [
+        "Board Resort Monorail at Contemporary",
+        "Ride to Polynesian"
+      ]
+    },
+    {
+      "from": "polynesian-resort",
+      "to": "grand-floridian-resort",
+      "mode": "monorail",
+      "time": 5,
+      "steps": [
+        "Board Resort Monorail at Polynesian",
+        "Ride to Grand Floridian"
+      ]
+    },
+    {
+      "from": "grand-floridian-resort",
+      "to": "magic-kingdom",
+      "mode": "monorail",
+      "time": 5,
+      "steps": [
+        "Board Resort Monorail at Grand Floridian",
+        "Ride to Magic Kingdom"
+      ]
+    },
+    {
+      "from": "magic-kingdom",
+      "to": "grand-floridian-resort",
+      "mode": "monorail",
+      "time": 5,
+      "steps": [
+        "Board Resort Monorail at Magic Kingdom",
+        "Ride to Grand Floridian"
+      ]
+    },
+    {
+      "from": "grand-floridian-resort",
+      "to": "polynesian-resort",
+      "mode": "monorail",
+      "time": 5,
+      "steps": [
+        "Board Resort Monorail at Grand Floridian",
+        "Ride to Polynesian"
+      ]
+    },
+    {
+      "from": "polynesian-resort",
+      "to": "contemporary-resort",
+      "mode": "monorail",
+      "time": 10,
+      "steps": [
+        "Board Resort Monorail at Polynesian",
+        "Ride to Contemporary"
+      ]
+    },
+    {
+      "from": "wilderness-lodge",
+      "to": "magic-kingdom",
+      "mode": "boat",
+      "time": 20,
+      "steps": [
+        "Board boat at Wilderness Lodge",
+        "Ride to Magic Kingdom"
+      ]
+    },
+    {
+      "from": "magic-kingdom",
+      "to": "wilderness-lodge",
+      "mode": "boat",
+      "time": 20,
+      "steps": [
+        "Board boat at Magic Kingdom",
+        "Ride to Wilderness Lodge"
+      ]
+    },
+    {
+      "from": "fort-wilderness",
+      "to": "magic-kingdom",
+      "mode": "boat",
+      "time": 25,
+      "steps": [
+        "Board boat at Fort Wilderness",
+        "Ride to Magic Kingdom"
+      ]
+    },
+    {
+      "from": "magic-kingdom",
+      "to": "fort-wilderness",
+      "mode": "boat",
+      "time": 25,
+      "steps": [
+        "Board boat at Magic Kingdom",
+        "Ride to Fort Wilderness"
+      ]
+    },
+    {
+      "from": "magic-kingdom",
+      "to": "animal-kingdom",
+      "mode": "bus",
+      "time": 25,
+      "steps": [
+        "Board Animal Kingdom bus at Magic Kingdom",
+        "Ride to Animal Kingdom"
+      ]
+    },
+    {
+      "from": "animal-kingdom",
+      "to": "magic-kingdom",
+      "mode": "bus",
+      "time": 25,
+      "steps": [
+        "Board Magic Kingdom bus at Animal Kingdom",
+        "Ride to Magic Kingdom"
+      ]
+    },
+    {
+      "from": "magic-kingdom",
+      "to": "hollywood-studios",
+      "mode": "bus",
+      "time": 20,
+      "steps": [
+        "Board Hollywood Studios bus at Magic Kingdom",
+        "Ride to Hollywood Studios"
+      ]
+    },
+    {
+      "from": "hollywood-studios",
+      "to": "magic-kingdom",
+      "mode": "bus",
+      "time": 20,
+      "steps": [
+        "Board Magic Kingdom bus at Hollywood Studios",
+        "Ride to Magic Kingdom"
+      ]
+    },
+    {
+      "from": "epcot",
+      "to": "hollywood-studios",
+      "mode": "bus",
+      "time": 15,
+      "steps": [
+        "Board Hollywood Studios bus at EPCOT",
+        "Ride to Hollywood Studios"
+      ]
+    },
+    {
+      "from": "hollywood-studios",
+      "to": "epcot",
+      "mode": "bus",
+      "time": 15,
+      "steps": [
+        "Board EPCOT bus at Hollywood Studios",
+        "Ride to EPCOT"
+      ]
+    },
+    {
+      "from": "epcot",
+      "to": "animal-kingdom",
+      "mode": "bus",
+      "time": 25,
+      "steps": [
+        "Board Animal Kingdom bus at EPCOT",
+        "Ride to Animal Kingdom"
+      ]
+    },
+    {
+      "from": "animal-kingdom",
+      "to": "epcot",
+      "mode": "bus",
+      "time": 25,
+      "steps": [
+        "Board EPCOT bus at Animal Kingdom",
+        "Ride to EPCOT"
+      ]
+    },
+    {
+      "from": "magic-kingdom",
+      "to": "disney-springs",
+      "mode": "bus",
+      "time": 30,
+      "steps": [
+        "Board Disney Springs bus at Magic Kingdom",
+        "Ride to Disney Springs"
+      ]
+    },
+    {
+      "from": "disney-springs",
+      "to": "magic-kingdom",
+      "mode": "bus",
+      "time": 30,
+      "steps": [
+        "Board Magic Kingdom bus at Disney Springs",
+        "Ride to Magic Kingdom"
+      ]
+    },
+    {
+      "from": "epcot",
+      "to": "disney-springs",
+      "mode": "bus",
+      "time": 25,
+      "steps": [
+        "Board Disney Springs bus at EPCOT",
+        "Ride to Disney Springs"
+      ]
+    },
+    {
+      "from": "disney-springs",
+      "to": "epcot",
+      "mode": "bus",
+      "time": 25,
+      "steps": [
+        "Board EPCOT bus at Disney Springs",
+        "Ride to EPCOT"
+      ]
+    },
+    {
+      "from": "hollywood-studios",
+      "to": "disney-springs",
+      "mode": "bus",
+      "time": 20,
+      "steps": [
+        "Board Disney Springs bus at Hollywood Studios",
+        "Ride to Disney Springs"
+      ]
+    },
+    {
+      "from": "disney-springs",
+      "to": "hollywood-studios",
+      "mode": "bus",
+      "time": 20,
+      "steps": [
+        "Board Hollywood Studios bus at Disney Springs",
+        "Ride to Hollywood Studios"
+      ]
+    },
+    {
+      "from": "animal-kingdom",
+      "to": "disney-springs",
+      "mode": "bus",
+      "time": 35,
+      "steps": [
+        "Board Disney Springs bus at Animal Kingdom",
+        "Ride to Disney Springs"
+      ]
+    },
+    {
+      "from": "disney-springs",
+      "to": "animal-kingdom",
+      "mode": "bus",
+      "time": 35,
+      "steps": [
+        "Board Animal Kingdom bus at Disney Springs",
+        "Ride to Animal Kingdom"
+      ]
+    }
+  ]
+}

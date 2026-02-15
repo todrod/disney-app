@@ -1,0 +1,77 @@
+{
+  "parkName": "Animal Kingdom",
+  "queueTimesId": 50,
+  "whatsExcitingRightNow": "Standard operations with no major closures reported. Early entry available for resort guests (opens 30 minutes early). Kilimanjaro Safaris and Expedition Everest continue to be the park's most popular attractions for rope drop strategy.",
+  "limitedEditionMerch": [
+    {
+      "id": "ak-001",
+      "name": "Pandora Banshee Plush with Sound",
+      "location": "Windtraders - Pandora",
+      "price": "$59.99",
+      "limitedEdition": true,
+      "stockStatus": "in-stock",
+      "notes": "Interactive - responds to touch"
+    },
+    {
+      "id": "ak-002",
+      "name": "Expedition Everest Yeti Hoodie",
+      "location": "Serka Zong Bazaar",
+      "price": "$74.99",
+      "limitedEdition": true,
+      "stockStatus": "in-stock",
+      "notes": "New winter collection"
+    },
+    {
+      "id": "ak-003",
+      "name": "Tree of Life Carved Wooden Figure",
+      "location": "Discovery Trading Company",
+      "price": "$44.99",
+      "limitedEdition": false,
+      "stockStatus": "low-stock",
+      "notes": "Hand-painted details"
+    }
+  ],
+  "popcornBuckets": [
+    {
+      "id": "pk-ak-001",
+      "name": "Simba Premium Light-Up Bucket",
+      "location": "Harambe Market",
+      "price": "$32.00",
+      "available": true,
+      "limitedEdition": true,
+      "stockStatus": "in-stock",
+      "notes": "Limited release - high demand"
+    },
+    {
+      "id": "pk-ak-002",
+      "name": "Baby Groot Premium Bucket",
+      "location": "Discovery Island",
+      "price": "$28.00",
+      "available": true,
+      "limitedEdition": false,
+      "stockStatus": "in-stock",
+      "notes": "Potted plant design"
+    }
+  ],
+  "parkHours": {
+    "today": "8:00 AM - 8:00 PM",
+    "tomorrow": "8:00 AM - 7:00 PM"
+  },
+  "nextEvent": {
+    "name": "Rivers of Light",
+    "time": "7:00 PM",
+    "location": "Discovery River",
+    "type": "parade"
+  },
+  "weatherStatus": {
+    "isRainy": false,
+    "indoorRecommended": false,
+    "indoorAttractions": [
+      "It's Tough to Be a Bug!",
+      "Finding Nemo: The Big Blue... and Beyond!",
+      "Festival of the Lion King",
+      "Conservation Station",
+      "Na'vi River Journey"
+    ]
+  }
+}

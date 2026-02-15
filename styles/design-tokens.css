@@ -1,0 +1,243 @@
+/**
+ * LANDIO DESIGN TOKENS
+ * Dark premium UI system for Disney Parks Guide
+ *
+ * ============================================
+ * USAGE: Import this file into your project
+ * Apply via CSS variables or Tailwind config
+ * ============================================
+ */
+
+:root {
+  /* ========================================
+   1. COLOR SYSTEM - DARK MODE (DEFAULT)
+   ======================================== */
+
+  /* Backgrounds - Deep dark navy-black theme */
+  --color-bg: #0a0e17;              /* Deepest app background (navy-black) */
+  --color-surface: #121827;         /* Card background (slightly lighter) */
+  --color-surface2: #1a2335;        /* Hover/active states */
+  --color-surface3: #243045;        /* Accent backgrounds */
+
+  /* Borders - Subtle, never harsh */
+  --color-border: #2a364d;          /* Default border */
+  --color-border-hover: #3d4c66;    /* Brightened on hover */
+  --color-border-focus: #4f63ff;    /* Focus ring color */
+
+  /* Typography - High contrast (WCAG AA compliant) */
+  --color-text: #f8fafc;            /* Primary text (very light, 16.1:1 contrast) */
+  --color-text-muted: #cbd5e1;      /* Secondary text (light gray, 12.5:1 contrast) */
+  --color-text-faint: #94a3b8;      /* Tertiary/helper text (medium gray, 7.2:1 contrast) */
+
+  /* Accents */
+  --color-accent: #4f63ff;          /* Primary accent (electric blue) */
+  --color-accent-hover: #6b7bff;    /* Brightened accent */
+  --color-accent2: #a855f7;         /* Secondary accent (purple) */
+  --color-accent2-hover: #c084fc;   /* Brightened accent2 */
+
+  /* Semantic colors - Dark mode */
+  --color-danger: #ef4444;          /* Error/danger */
+  --color-danger-bg: rgba(239, 68, 68, 0.15);
+  --color-success: #10b981;         /* Success */
+  --color-success-bg: rgba(16, 185, 129, 0.15);
+  --color-warning: #f59e0b;         /* Warning */
+  --color-warning-bg: rgba(245, 158, 11, 0.15);
+  --color-info: #3b82f6;            /* Info */
+  --color-info-bg: rgba(59, 130, 246, 0.15);
+
+  /* ========================================
+   2. TYPOGRAPHY SCALE
+   ======================================== */
+
+  /* Font families */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  /* Type scale - Display (headlines) */
+  --text-display-xs: 0.75rem;       /* 12px */
+  --text-display-sm: 0.875rem;      /* 14px */
+  --text-display-base: 1rem;        /* 16px */
+  --text-display-md: 1.25rem;        /* 20px */
+  --text-display-lg: 1.5rem;        /* 24px */
+  --text-display-xl: 2rem;          /* 32px */
+  --text-display-2xl: 2.5rem;       /* 40px */
+  --text-display-3xl: 3rem;         /* 48px */
+
+  /* Type scale - Body */
+  --text-xs: 0.75rem;               /* 12px */
+  --text-sm: 0.875rem;              /* 14px */
+  --text-base: 1rem;                /* 16px */
+  --text-lg: 1.125rem;              /* 18px */
+  --text-xl: 1.25rem;               /* 20px */
+  --text-2xl: 1.5rem;               /* 24px */
+
+  /* Font weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  /* Line heights */
+  --leading-tight: 1.2;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* Letter spacing */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+
+  /* ========================================
+   3. SPACING SCALE
+   ======================================== */
+
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+
+  /* ========================================
+   4. BORDER RADIUS
+   ======================================== */
+
+  --radius-none: 0;
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-xl: 1rem;      /* 16px */
+  --radius-2xl: 1.5rem;   /* 24px */
+  --radius-full: 9999px;  /* Fully rounded (pills) */
+
+  /* ========================================
+   5. SHADOWS
+   ======================================== */
+
+  --shadow-none: none;
+  --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-med: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.15);
+
+  /* ========================================
+   6. BORDERS
+   ======================================== */
+
+  --border-thin: 1px;
+  --border-medium: 2px;
+  --border-thick: 3px;
+
+  /* ========================================
+   7. TRANSITIONS
+   ======================================== */
+
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* ========================================
+   8. Z-INDEX SCALE
+   ======================================== */
+
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  /* ========================================
+   9. BREAKPOINTS
+   ======================================== */
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* ========================================
+   LIGHT MODE THEME
+   ======================================== */
+
+[data-theme="light"] {
+  /* Backgrounds - Light mode */
+  --color-bg: #f8fafc;              /* Light background (very light slate) */
+  --color-surface: #ffffff;         /* Card background (pure white) */
+  --color-surface2: #f1f5f9;        /* Hover/active states (light gray) */
+  --color-surface3: #e2e8f0;        /* Accent backgrounds (lighter gray) */
+
+  /* Borders - Light mode */
+  --color-border: #cbd5e1;          /* Default border (light gray) */
+  --color-border-hover: #94a3b8;    /* Darkened on hover */
+  --color-border-focus: #4f63ff;    /* Focus ring color (same as dark mode) */
+
+  /* Typography - Light mode (WCAG AA compliant) */
+  --color-text: #0f172a;            /* Primary text (very dark, 15.2:1 contrast) */
+  --color-text-muted: #475569;      /* Secondary text (dark gray, 9.5:1 contrast) */
+  --color-text-faint: #64748b;      /* Tertiary/helper text (medium gray, 6.8:1 contrast) */
+
+  /* Accents - Same as dark mode for consistency */
+  --color-accent: #4f63ff;          /* Primary accent (electric blue) */
+  --color-accent-hover: #6b7bff;    /* Brightened accent */
+  --color-accent2: #a855f7;         /* Secondary accent (purple) */
+  --color-accent2-hover: #c084fc;   /* Brightened accent2 */
+
+  /* Semantic colors - Light mode */
+  --color-danger: #dc2626;          /* Error/danger (slightly darker for light mode) */
+  --color-danger-bg: rgba(220, 38, 38, 0.1);
+  --color-success: #059669;         /* Success (slightly darker for light mode) */
+  --color-success-bg: rgba(5, 150, 105, 0.1);
+  --color-warning: #d97706;         /* Warning (slightly darker for light mode) */
+  --color-warning-bg: rgba(217, 119, 6, 0.1);
+  --color-info: #2563eb;            /* Info (slightly darker for light mode) */
+  --color-info-bg: rgba(37, 99, 235, 0.1);
+}
+
+/* ========================================
+   DARK MODE OVERRIDES (explicitly set)
+   ======================================== */
+
+[data-theme="dark"] {
+  /* Already set in :root, but can add specific overrides if needed */
+  --color-bg: #0a0e17;
+  --color-surface: #121827;
+  --color-surface2: #1a2335;
+  --color-surface3: #243045;
+}
+
+/* ========================================
+   SYSTEM PREFERENCE (fallback)
+   ======================================== */
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    /* Light mode via system preference when no explicit theme set */
+    --color-bg: #f8fafc;
+    --color-surface: #ffffff;
+    --color-surface2: #f1f5f9;
+    --color-surface3: #e2e8f0;
+    --color-border: #cbd5e1;
+    --color-border-hover: #94a3b8;
+    --color-text: #0f172a;
+    --color-text-muted: #475569;
+    --color-text-faint: #64748b;
+  }
+}

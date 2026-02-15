@@ -1,0 +1,87 @@
+{
+  "parkName": "Magic Kingdom",
+  "queueTimesId": 47,
+  "whatsExcitingRightNow": "Standard operations with no major closures reported. Enchanted Tiki Room roof repainting is currently underway (minor cosmetic work). TRON Lightcycle/Run continues to draw crowds for virtual queue boarding groups.",
+  "limitedEditionMerch": [
+    {
+      "id": "mk-001",
+      "name": "50th Anniversary Cinderella Castle Spirit Jersey",
+      "location": "Emporium - Main Street USA",
+      "price": "$74.99",
+      "limitedEdition": true,
+      "stockStatus": "low-stock",
+      "notes": "EARidescent collection"
+    },
+    {
+      "id": "mk-002",
+      "name": "Space Mountain 50th Retro Tee",
+      "location": "Tomorrowland Light & Power Co.",
+      "price": "$34.99",
+      "limitedEdition": true,
+      "stockStatus": "in-stock",
+      "notes": "Released January 2025"
+    },
+    {
+      "id": "mk-003",
+      "name": "Haunted Mansion Madame Leota Crystal Ball",
+      "location": "Memento Mori",
+      "price": "$49.99",
+      "limitedEdition": false,
+      "stockStatus": "sold-out",
+      "notes": "Interactive light-up feature"
+    }
+  ],
+  "popcornBuckets": [
+    {
+      "id": "pk-mk-001",
+      "name": "Cinderella Castle 50th Anniversary Bucket",
+      "location": "Main Street Popcorn Cart",
+      "price": "$29.00",
+      "available": true,
+      "limitedEdition": true,
+      "stockStatus": "low-stock",
+      "notes": "Lights up! Limited quantity daily"
+    },
+    {
+      "id": "pk-mk-002",
+      "name": "Figment Premium Bucket",
+      "location": "Tomorrowland Popcorn Stand",
+      "price": "$25.00",
+      "available": false,
+      "limitedEdition": false,
+      "stockStatus": "sold-out",
+      "notes": "Currently sold out - check back tomorrow"
+    },
+    {
+      "id": "pk-mk-003",
+      "name": "Classic Mickey Balloon Bucket",
+      "location": "Multiple locations",
+      "price": "$16.00",
+      "available": true,
+      "limitedEdition": false,
+      "stockStatus": "in-stock",
+      "notes": "Standard bucket, always available"
+    }
+  ],
+  "parkHours": {
+    "today": "9:00 AM - 11:00 PM",
+    "tomorrow": "9:00 AM - 10:00 PM"
+  },
+  "nextEvent": {
+    "name": "Happily Ever After Fireworks",
+    "time": "9:00 PM",
+    "location": "Main Street, USA",
+    "type": "fireworks"
+  },
+  "weatherStatus": {
+    "isRainy": false,
+    "indoorRecommended": false,
+    "indoorAttractions": [
+      "Haunted Mansion",
+      "Pirates of the Caribbean",
+      "Space Mountain",
+      "Buzz Lightyear Space Ranger Spin",
+      "Tomorrowland Speedway (covered)"
+    ]
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "parkName": "Hollywood Studios",
+  "queueTimesId": 49,
+  "whatsExcitingRightNow": "No special events reported. Standard operations with all major attractions running. Star Wars: Galaxy's Edge continues to be a major draw with Rise of the Resistance frequently using virtual queue boarding groups.",
+  "limitedEditionMerch": [
+    {
+      "id": "hs-001",
+      "name": "Star Wars Ahsoka Tano Lightsabers (Dual Set)",
+      "location": "Dok-Ondar's Den of Antiquities",
+      "price": "$249.99",
+      "limitedEdition": true,
+      "stockStatus": "low-stock",
+      "notes": "New release - limited stock"
+    },
+    {
+      "id": "hs-002",
+      "name": "Tower of Terror Bellhop Uniform Jacket",
+      "location": "Tower Hotel Gifts",
+      "price": "$89.99",
+      "limitedEdition": true,
+      "stockStatus": "in-stock",
+      "notes": "Adult sizing only"
+    },
+    {
+      "id": "hs-003",
+      "name": "Mickey & Minnie Runaway Railway Engineer Cap",
+      "location": "Mickey's of Hollywood",
+      "price": "$32.99",
+      "limitedEdition": false,
+      "stockStatus": "in-stock",
+      "notes": "Ride-themed merchandise"
+    }
+  ],
+  "popcornBuckets": [
+    {
+      "id": "pk-hs-001",
+      "name": "BB-8 Interactive Premium Bucket",
+      "location": "Galaxy's Edge",
+      "price": "$35.00",
+      "available": false,
+      "limitedEdition": true,
+      "stockStatus": "sold-out",
+      "notes": "SOLD OUT - Check back Monday"
+    },
+    {
+      "id": "pk-hs-002",
+      "name": "Slinky Dog Dash Bucket",
+      "location": "Toy Story Land",
+      "price": "$24.00",
+      "available": true,
+      "limitedEdition": false,
+      "stockStatus": "in-stock",
+      "notes": "Stretches like Slinky!"
+    }
+  ],
+  "parkHours": {
+    "today": "9:00 AM - 9:00 PM",
+    "tomorrow": "9:00 AM - 9:00 PM"
+  },
+  "nextEvent": {
+    "name": "Wonderful World of Animation",
+    "time": "9:00 PM",
+    "location": "Chinese Theater Forecourt",
+    "type": "fireworks"
+  },
+  "weatherStatus": {
+    "isRainy": false,
+    "indoorRecommended": false,
+    "indoorAttractions": [
+      "Muppet*Vision 3D",
+      "Star Tours",
+      "Toy Story Mania!",
+      "Twilight Zone Tower of Terror (indoor queue)"
+    ]
+  },
+  "popcornBucketsLastUpdated": "2026-02-09T14:30:00-05:00"
+}

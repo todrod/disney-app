@@ -1,0 +1,80 @@
+{
+  "parkName": "EPCOT",
+  "queueTimesId": 48,
+  "whatsExcitingRightNow": "Festival of the Arts is in full swing through February 23! Disney on Broadway Concert Series grand finale on Feb 22-23 features Ashley Brown, Ainsley Melham, Susan Egan, and James Monroe Iglehart. Over 20 Food Studios are active, and the Figment Artist Popcorn Bucket is available via mobile order only at Figment's Inspiration Station (limit 2 per person, $29).",
+  "limitedEditionMerch": [
+    {
+      "id": "ep-001",
+      "name": "Festival of the Arts Paint Palette Spirit Jersey",
+      "location": "World Traveler",
+      "price": "$79.99",
+      "limitedEdition": true,
+      "stockStatus": "in-stock",
+      "notes": "Festival exclusive - ends Feb 24"
+    },
+    {
+      "id": "ep-002",
+      "name": "Figment Reversible Plush",
+      "location": "ImageWorks Gift Shop",
+      "price": "$34.99",
+      "limitedEdition": true,
+      "stockStatus": "low-stock",
+      "notes": "Transforms into Dreamfinder!"
+    },
+    {
+      "id": "ep-003",
+      "name": "Remy's Ratatouille Adventure Chef Hat",
+      "location": "France Pavilion",
+      "price": "$29.99",
+      "limitedEdition": false,
+      "stockStatus": "in-stock",
+      "notes": "Embroidered with Remy"
+    }
+  ],
+  "popcornBuckets": [
+    {
+      "id": "pk-ep-001",
+      "name": "Figment Rainbow Premium Bucket",
+      "location": "Future World Popcorn Stand",
+      "price": "$28.00",
+      "available": true,
+      "limitedEdition": true,
+      "stockStatus": "just-dropped",
+      "notes": "Just released today! Very popular!"
+    },
+    {
+      "id": "pk-ep-002",
+      "name": "Festival of the Arts Paintbrush Bucket",
+      "location": "World Showcase Plaza",
+      "price": "$25.00",
+      "available": true,
+      "limitedEdition": true,
+      "stockStatus": "low-stock",
+      "notes": "Festival exclusive - limited supply"
+    }
+  ],
+  "parkHours": {
+    "today": "9:00 AM - 9:00 PM",
+    "tomorrow": "10:00 AM - 10:00 PM"
+  },
+  "nextEvent": {
+    "name": "Disney on Broadway Concert Series",
+    "time": "5:30 PM & 8:00 PM",
+    "location": "America Gardens Theatre",
+    "type": "parade"
+  },
+  "weatherStatus": {
+    "isRainy": true,
+    "indoorRecommended": true,
+    "indoorAttractions": [
+      "Spaceship Earth",
+      "The Seas with Nemo & Friends",
+      "Turtle Talk with Crush",
+      "Living with the Land",
+      "Journey into Imagination with Figment",
+      "Frozen Ever After",
+      "Gran Fiesta Tour",
+      "The American Adventure"
+    ]
+  }
+}

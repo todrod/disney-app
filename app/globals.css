@@ -1,0 +1,759 @@
+/* ========================================
+   LANDIO DESIGN SYSTEM - DISNEY PARKS GUIDE
+   ========================================
+   A dark premium UI system with deep navy-black backgrounds,
+   high-contrast typography, and subtle interactions
+   ======================================== */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   IMPORT LANDIO DESIGN TOKENS & COMPONENTS
+   ======================================== */
+
+@import '../styles/design-tokens.css';
+@import '../styles/landio-components.css';
+
+/* ========================================
+   GOOGLE FONTS - Inter
+   ======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ========================================
+   APP-SPECIFIC OVERRIDES
+   ======================================== */
+
+/* Ensure body uses Landio background */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+/* Override any light mode defaults for Disney Parks Guide */
+html {
+  background-color: var(--color-bg);
+}
+
+/* ========================================
+   TAILWIND CONFIGURATION FOR LANDIO
+   ======================================== */
+
+@layer base {
+  /* Extend Tailwind with Landio colors */
+  .bg-landio-bg {
+    background-color: var(--color-bg);
+  }
+  .bg-landio-surface {
+    background-color: var(--color-surface);
+  }
+  .bg-landio-surface2 {
+    background-color: var(--color-surface2);
+  }
+  .bg-landio-surface3 {
+    background-color: var(--color-surface3);
+  }
+
+  /* Text colors - WCAG AA compliant */
+  .text-landio {
+    color: var(--color-text);
+  }
+  .text-landio-muted {
+    color: var(--color-text-muted);
+  }
+  .text-landio-faint {
+    color: var(--color-text-faint);
+  }
+
+  /* Accent colors */
+  .text-landio-accent {
+    color: var(--color-accent);
+  }
+  .bg-landio-accent {
+    background-color: var(--color-accent);
+  }
+
+  /* Borders */
+  .border-landio {
+    border-color: var(--color-border);
+  }
+  .border-landio-hover {
+    border-color: var(--color-border-hover);
+  }
+
+  /* Spacing utilities that work with Tailwind */
+}
+
+/* ========================================
+   THEME INITIALIZATION
+   ======================================== */
+
+/* Ensure proper theme application on load */
+html {
+  color-scheme: dark; /* Default to dark mode (Landio style) */
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* ========================================
+   DISNEY PARKS THEME COLOR PRESERVATION
+   ======================================== */
+
+/* Park-specific colors - adapted to work with Landio */
+:root {
+  --disney-blue: #0063B2;
+  --disney-purple: #5B2E8C;
+  --disney-gold: #F5A623;
+  --magic-kingdom-blue: #0078D4;
+  --epcot-purple: #6B2D9F;
+  --hollywood-red: #DC2626;
+  --animal-green: #16A34A;
+}
+
+/* ========================================
+   LEGACY THEME SYSTEM (Preserved for compatibility)
+   ======================================== */
+
+/* Smooth scrolling on mobile */
+html {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Remove tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Dynamic backgrounds - Park Pulse Theme (time-based gradients) */
+/* IMPORTANT: These have high specificity with !important to override all defaults */
+
+body.theme-park-pulse.morning {
+  background: linear-gradient(135deg, #0f1628 0%, #1a1f2e 40%, #2a2045 70%, #1a1f2e 100%) !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+}
+
+body.theme-park-pulse.afternoon {
+  background: linear-gradient(135deg, #0a0e17 0%, #1a1a2e 40%, #1f1a3d 70%, #1a1a2e 100%) !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+}
+
+body.theme-park-pulse.evening {
+  background: linear-gradient(135deg, #1a0f2d 0%, #2d1f4a 40%, #3d2060 70%, #2d1f4a 100%) !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+}
+
+body.theme-park-pulse.night {
+  background: linear-gradient(135deg, #0a0e17 0%, #0d1321 40%, #0f1528 70%, #0a0e17 100%) !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+}
+
+/* ========================================
+   GLASSMORPHISM - Adapted for Landio
+   ======================================== */
+
+@layer utilities {
+  /* Glassmorphism that works with Landio dark theme */
+  .glass-card {
+    background: rgba(18, 24, 39, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .glass-card-light {
+    background: rgba(18, 24, 39, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border-hover);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .glass-card-dark {
+    background: rgba(10, 14, 23, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-med);
+  }
+
+  /* Navigation glassmorphism */
+  .glass-nav {
+    background: rgba(10, 14, 23, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .glass-nav-dark {
+    background: rgba(10, 14, 23, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border);
+  }
+}
+
+/* ========================================
+   LANDIO-BASED HOVER EFFECTS
+   ======================================== */
+
+@layer utilities {
+  /* Glow hover using Landio colors */
+  .hover-glow {
+    transition: all var(--transition-base);
+  }
+
+  .hover-glow:hover {
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  /* Subtle hover for cards */
+  .hover-lift {
+    transition: all var(--transition-fast);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Sparkle hover effect */
+  .hover-sparkle {
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-base);
+  }
+
+  .hover-sparkle:hover {
+    box-shadow: 0 0 20px rgba(79, 99, 255, 0.2);
+  }
+}
+
+/* ========================================
+   LANDIO BUTTONS
+   ======================================== */
+
+@layer components {
+  .btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-text);
+    border-radius: var(--radius-full);
+    padding: var(--space-3) var(--space-6);
+    font-weight: var(--font-semibold);
+    transition: all var(--transition-fast);
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-med);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-full);
+    padding: var(--space-3) var(--space-6);
+    font-weight: var(--font-semibold);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    background-color: rgba(79, 99, 255, 0.1);
+    border-color: var(--color-accent-hover);
+  }
+
+  .btn-ghost {
+    background-color: transparent;
+    color: var(--color-accent);
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-3);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--color-surface2);
+  }
+
+  .btn-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-lg);
+    background-color: transparent;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-icon:hover {
+    background-color: var(--color-surface2);
+    color: var(--color-text);
+  }
+}
+
+/* ========================================
+   LANDIO INPUTS
+   ======================================== */
+
+@layer components {
+  .input-landio {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--color-surface2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-base);
+    color: var(--color-text);
+    transition: all var(--transition-fast);
+    outline: none;
+  }
+
+  .input-landio::placeholder {
+    color: var(--color-text-faint);
+    opacity: 0.7;
+  }
+
+  /* Better contrast for option elements in select dropdowns */
+  .input-landio option,
+  .landio-select option {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+  }
+
+  .input-landio:hover {
+    border-color: var(--color-border-hover);
+  }
+
+  .input-landio:focus {
+    border-color: var(--color-border-focus);
+    box-shadow: 0 0 0 3px rgba(79, 99, 255, 0.1);
+  }
+
+  .input-search {
+    border-radius: var(--radius-full);
+    padding-left: var(--space-5);
+  }
+}
+
+/* ========================================
+   LANDIO PILLS & TAGS
+   ======================================== */
+
+@layer components {
+  .pill-landio {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .pill-accent {
+    background-color: var(--color-accent);
+    color: var(--color-text);
+  }
+
+  .pill-accent2 {
+    background-color: var(--color-accent2);
+    color: var(--color-text);
+  }
+
+  .pill-info {
+    background-color: var(--color-info-bg);
+    color: var(--color-info);
+  }
+
+  .pill-success {
+    background-color: var(--color-success-bg);
+    color: var(--color-success);
+  }
+
+  .pill-warning {
+    background-color: var(--color-warning-bg);
+    color: var(--color-warning);
+  }
+
+  .pill-danger {
+    background-color: var(--color-danger-bg);
+    color: var(--color-danger);
+  }
+
+  /* Ensure proper contrast for all pills - increased opacity for better readability */
+  .pill-info,
+  .pill-success,
+  .pill-warning,
+  .pill-danger {
+    position: relative;
+    z-index: 1;
+  }
+
+  .pill-info::before,
+  .pill-success::before,
+  .pill-warning::before,
+  .pill-danger::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: currentColor;
+    opacity: 0.15;
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  .tag-landio {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-md);
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+}
+
+/* ========================================
+   LANDIO CARDS
+   ======================================== */
+
+@layer components {
+  .card-landio {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5);
+    box-shadow: var(--shadow-soft);
+    transition: all var(--transition-fast);
+  }
+
+  .card-landio:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-med);
+  }
+
+  .card-landio-lg {
+    padding: var(--space-6);
+  }
+
+  .card-landio-featured {
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-med);
+  }
+
+  .card-landio-mini {
+    background-color: var(--color-surface2);
+    padding: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+
+  /* Park card with aspect ratio */
+  .card-park {
+    aspect-ratio: 4/3;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media (max-width: 640px) {
+    .card-park {
+      aspect-ratio: 1/1;
+    }
+  }
+}
+
+/* ========================================
+   LANDIO NAVIGATION
+   ======================================== */
+
+@layer components {
+  .nav-landio {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 var(--space-6);
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 640px) {
+    .nav-landio {
+      height: 56px;
+      padding: 0 var(--space-4);
+    }
+  }
+
+  .nav-link {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    padding: var(--space-2) var(--space-3);
+    border-bottom: 2px solid transparent;
+    transition: all var(--transition-fast);
+  }
+
+  .nav-link:hover {
+    color: var(--color-text);
+  }
+
+  .nav-link.active {
+    color: var(--color-text);
+    border-bottom-color: var(--color-accent);
+  }
+}
+
+/* ========================================
+   LANDIO TABS
+   ======================================== */
+
+@layer components {
+  .tabs-pill {
+    display: inline-flex;
+    background-color: var(--color-surface2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    padding: var(--space-1);
+  }
+
+  .tab-landio {
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: none;
+    background: none;
+    outline: none;
+  }
+
+  .tab-landio:hover {
+    background-color: var(--color-surface3);
+    color: var(--color-text);
+  }
+
+  .tab-landio.active {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+}
+
+/* ========================================
+   SETTINGS PANEL STYLES - Adapted for Landio
+   ======================================== */
+
+@layer components {
+  .settings-panel {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 350px;
+    height: 100vh;
+    background-color: var(--color-surface);
+    border-left: 1px solid var(--color-border);
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+  }
+
+  .settings-panel.open {
+    right: 0;
+  }
+
+  .settings-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+
+  .settings-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .settings-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent2));
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: var(--shadow-med);
+    z-index: 998;
+    transition: all 0.3s ease;
+  }
+
+  .settings-button:hover {
+    transform: rotate(45deg) scale(1.1);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Settings panel scrollbar styling */
+  .settings-panel::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .settings-panel::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+
+  .settings-panel::-webkit-scrollbar-thumb {
+    background: var(--color-border-hover);
+    border-radius: 4px;
+  }
+
+  .settings-panel::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-focus);
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY ENHANCEMENTS
+   ======================================== */
+
+/* Enhance focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+
+@media (max-width: 768px) {
+  .settings-panel {
+    width: 100%;
+    right: -100%;
+  }
+
+  .settings-button {
+    width: 44px;
+    height: 44px;
+    top: 16px;
+    right: 16px;
+    font-size: 20px;
+  }
+}
+
+/* ========================================
+   SECTION HIERARCHY UTILITIES
+   ======================================== */
+
+@layer components {
+  .section-header {
+    margin-bottom: var(--space-4);
+  }
+
+  .section-title {
+    font-size: var(--text-display-lg);
+    font-weight: var(--font-bold);
+    font-family: var(--font-display);
+    color: var(--color-text);
+    margin: 0 0 var(--space-2) 0;
+    line-height: var(--leading-tight);
+  }
+
+  .section-subhead {
+    font-size: var(--text-base);
+    font-weight: var(--font-normal);
+    font-family: var(--font-body);
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: var(--leading-snug);
+  }
+}
+
+/* ========================================
+   CHIP / FILTER STYLES
+   ======================================== */
+
+@layer components {
+  .chip-landio {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-2) var(--space-4);
+    background-color: var(--color-surface2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .chip-landio:hover {
+    border-color: var(--color-border-hover);
+    color: var(--color-text);
+  }
+
+  .chip-landio.active {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-text);
+  }
+}
