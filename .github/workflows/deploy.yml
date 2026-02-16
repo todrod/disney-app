@@ -26,13 +26,15 @@ jobs:
           script: |
             set -euo pipefail
             cd /var/www/disney-app
+
+            export GIT_SSH_COMMAND='ssh -i /root/.ssh/id_ed25519_github -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes'
             git fetch origin
             git checkout main
             git reset --hard origin/main
+
             npm ci
             npm run build
 
-            # Keep one PM2 app and reload it with the new build.
             pm2 delete 0 1 >/dev/null 2>&1 || true
             if pm2 describe disney-app >/dev/null 2>&1; then
               pm2 restart disney-app --update-env
