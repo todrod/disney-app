@@ -31,6 +31,16 @@ jobs:
             git reset --hard origin/main
             npm ci
             npm run build
+
+            # Keep one PM2 app and reload it with the new build.
+            pm2 delete 0 1 >/dev/null 2>&1 || true
+            if pm2 describe disney-app >/dev/null 2>&1; then
+              pm2 restart disney-app --update-env
+            else
+              pm2 start /var/www/disney-app/node_modules/next/dist/bin/next --name disney-app -- start -p 8000
+            fi
+            pm2 save
+
             systemctl restart nginx
             curl -fsS http://127.0.0.1:8000 >/dev/null
             curl -fsSI http://127.0.0.1 >/dev/null
