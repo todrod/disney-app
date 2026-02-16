@@ -35,15 +35,20 @@ jobs:
             npm ci
             npm run build
 
-            pm2 delete 0 1 >/dev/null 2>&1 || true
-            if pm2 describe disney-app >/dev/null 2>&1; then
-              pm2 restart disney-app --update-env
-            else
-              pm2 start /var/www/disney-app/node_modules/next/dist/bin/next --name disney-app -- start -p 8000
-            fi
+            # Ensure a single PM2 process for this app.
+            pm2 delete disney-app >/dev/null 2>&1 || true
+            pm2 start /var/www/disney-app/node_modules/next/dist/bin/next --name disney-app -- start -p 8000
             pm2 save
 
             systemctl restart nginx
-            curl -fsS http://127.0.0.1:8000 >/dev/null
-            curl -fsSI http://127.0.0.1 >/dev/null
-            echo "Deploy successful"
+
+            # Retry health checks to avoid transient failures right after restart.
+            for i in 1 2 3 4 5; do
+              if curl -fsS http://127.0.0.1:8000 >/dev/null && curl -fsSI http://127.0.0.1 >/dev/null; then
+                echo "Deploy successful"
+                exit 0
+              fi
+              sleep 2
+            done
+            echo "Health checks failed"
+            exit 1
