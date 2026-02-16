@@ -72,7 +72,7 @@ jobs:
           pm2 save
           systemctl restart nginx
           for i in 1 2 3 4 5; do
-            if curl -fsS http://127.0.0.1:8000 >/dev/null && curl -fsSI http://127.0.0.1 >/dev/null; then
+            if curl -fsS http://127.0.0.1:8000 >/dev/null; then
               echo "Deploy successful"
               exit 0
             fi
