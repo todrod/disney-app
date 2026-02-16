@@ -53,18 +53,18 @@ jobs:
           ssh -i ~/.ssh/vps_key -p "$VPS_PORT" -o StrictHostKeyChecking=yes "$VPS_USER@$VPS_HOST" <<'EOF_REMOTE'
           set -euxo pipefail
           cd /var/www/disney-app
-          export GIT_SSH_COMMAND='ssh -i /root/.ssh/id_ed25519_github -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes'
+          if [ -f /root/.ssh/id_ed25519_github ]; then
+            export GIT_SSH_COMMAND='ssh -i /root/.ssh/id_ed25519_github -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes'
+          fi
           git fetch origin
           git checkout main
           git reset --hard origin/main
           npm ci
           npm run build
-          pm2 delete disney-app >/dev/null 2>&1 || true
-          pm2 start /var/www/disney-app/node_modules/next/dist/bin/next --name disney-app -- start -p 8000
+          pm2 restart disney-app || pm2 start ecosystem.config.js
           pm2 save
-          systemctl restart nginx
           for i in 1 2 3 4 5; do
-            if curl -fsS http://127.0.0.1:8000 >/dev/null && curl -fsSI http://127.0.0.1 >/dev/null; then
+            if curl -fsS http://127.0.0.1:3000 >/dev/null; then
               echo "Deploy successful"
               exit 0
             fi
