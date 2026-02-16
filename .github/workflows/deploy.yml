@@ -2,103 +2,36 @@ name: Deploy to VPS
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
-    inputs:
-      action:
-        description: 'Deployment action'
-        required: true
-        default: 'restart'
-        type: choice
-        options:
-          - restart
-          - rebuild
-          - diagnose
-          - fix-nginx
 
-env:
-  VPS_HOST: 187.77.193.9
-  VPS_USER: root
-  APP_DIR: /var/www/disney-app
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Deploy - Restart App
-        if: github.event.inputs.action == 'restart' || github.event.inputs.action == ''
-        uses: appleboy/ssh-action@master
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT }}
+          script_stop: true
           script: |
-            cd ${{ env.APP_DIR }}
-            pm2 restart disney-app
-            pm2 status
-
-      - name: Deploy - Full Rebuild
-        if: github.event.inputs.action == 'rebuild'
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          script: |
-            cd ${{ env.APP_DIR }}
-            pm2 delete all || true
-            rm -rf .next
-            npm install --production=false
-            NODE_ENV=production npm run build
-            pm2 start ecosystem.config.js
-            sleep 10
-            pm2 save
-            pm2 status
-
-      - name: Deploy - Diagnose
-        if: github.event.inputs.action == 'diagnose'
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          script: |
-            echo "=== System Info ==="
-            uname -a
-            node -v
-            npm -v
-            echo ""
-            echo "=== PM2 Status ==="
-            pm2 status || echo "PM2 not running"
-            echo ""
-            echo "=== Next.js Build ==="
-            ls -la ${{ env.APP_DIR }}/.next/ || echo "No .next directory"
-            echo ""
-            echo "=== Nginx Status ==="
-            systemctl status nginx --no-pager
-            echo ""
-            echo "=== Nginx Sites Enabled ==="
-            ls -la /etc/nginx/sites-enabled/
-            echo ""
-            echo "=== Test App Response ==="
-            curl -I http://localhost:3000 || echo "App not responding"
-
-      - name: Deploy - Fix Nginx
-        if: github.event.inputs.action == 'fix-nginx'
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          script: |
-            echo "=== Removing default Nginx site ==="
-            rm -f /etc/nginx/sites-enabled/default
-            echo "=== Testing Nginx config ==="
-            nginx -t
-            echo "=== Restarting Nginx ==="
+            set -euo pipefail
+            cd /var/www/disney-app
+            git fetch origin
+            git checkout main
+            git reset --hard origin/main
+            npm ci
+            npm run build
             systemctl restart nginx
-            echo "=== Nginx Status ==="
-            systemctl status nginx --no-pager
-            echo ""
-            echo "=== Sites now enabled ==="
-            ls -la /etc/nginx/sites-enabled/
+            curl -fsS http://127.0.0.1:8000 >/dev/null
+            curl -fsSI http://127.0.0.1 >/dev/null
+            echo "Deploy successful"
