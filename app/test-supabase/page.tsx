@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { supabase } from '../lib/supabase'
 
 export default async function SupabaseTest() {
@@ -30,12 +31,12 @@ export default async function SupabaseTest() {
             <p><strong>Environment:</strong> {process.env.NODE_ENV}</p>
           </div>
 
-          <button
-            onClick={() => window.location.href = '/'}
-            className="mt-6 w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition-colors"
+          <Link
+            href="/"
+            className="mt-6 block w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition-colors text-center"
           >
             Back to Home
-          </button>
+          </Link>
         </div>
       </div>
     )
