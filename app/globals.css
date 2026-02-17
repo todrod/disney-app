@@ -757,3 +757,18 @@ body.theme-park-pulse.night {
     color: var(--color-text);
   }
 }
+
+/* ========================================
+   SCROLLBAR UTILITIES
+   ======================================== */
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
