@@ -5,6 +5,7 @@ import Image from "next/image";
 import Navigation from "./Navigation";
 import ThemeToggle from "./ThemeToggle";
 import ThemeSettingsDrawer from "./ThemeSettingsDrawer";
+import SearchBar from "./SearchBar";
 
 export default function Header() {
   return (
@@ -41,6 +42,9 @@ export default function Header() {
             <ThemeToggle />
             <ThemeSettingsDrawer />
           </div>
+        </div>
+        <div className="pb-4">
+          <SearchBar />
         </div>
       </div>
     </header>
