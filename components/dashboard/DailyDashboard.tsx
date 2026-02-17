@@ -1,7 +1,11 @@
 "use client";
 
-import { useState } from 'react';
-import { DailyDashboardData } from '@/data/daily-dashboard-schema';
+import { useState, useEffect } from 'react';
+import { useNewsletterData } from '@/hooks/dashboard/useNewsletterData';
+import { useCrowdData } from '@/hooks/dashboard/useCrowdData';
+import { newsletterToUI } from '@/lib/dashboard/newsletterToUI';
+import { crowdsToUI } from '@/lib/dashboard/crowdsToUI';
+import { CrowdLevel } from '@/data/daily-dashboard-schema';
 import QuickMoreToggle from './QuickMoreToggle';
 import StoryCard from './StoryCard';
 import HotTile from './HotTile';
@@ -9,20 +13,59 @@ import ParkCard from './ParkCard';
 import ResortBlurb from './ResortBlurb';
 import LoadingState from './LoadingState';
 import EmptyState from './EmptyState';
+import ErrorState from './ErrorState';
 
-interface DailyDashboardProps {
-  data: DailyDashboardData | null;
-  isLoading?: boolean;
-}
+/**
+ * DailyDashboard Component
+ * Renders the Disney Daily Dashboard with live data
+ * Features:
+ * - Client-side data fetching with 5-minute caching
+ * - Skeleton loading states
+ * - Error handling with fallback
+ * - Update-safe rendering (only changed sections update)
+ * - Smooth crowd meter animations
+ * - Preserves Quick/More toggle state across updates
+ */
 
-export default function DailyDashboard({ data, isLoading = false }: DailyDashboardProps) {
+export default function DailyDashboard() {
   const [isMore, setIsMore] = useState(false);
-
-  if (isLoading) {
+  
+  // Fetch data using custom hooks
+  const { data: newsletterData, isLoading: newsletterLoading, error: newsletterError } = useNewsletterData();
+  const { data: crowdData, isLoading: crowdLoading, error: crowdError } = useCrowdData();
+  
+  // Track previous crowd levels for animations
+  const [prevCrowdLevels, setPrevCrowdLevels] = useState<Record<string, CrowdLevel>>({});
+  
+  // Transform data to UI format
+  const uiData = newsletterData ? newsletterToUI(newsletterData) : null;
+  const uiCrowdData = crowdData && newsletterData ? crowdsToUI(crowdData, newsletterData.lastUpdated) : null;
+  
+  // Update previous crowd levels when new data arrives (for animations)
+  useEffect(() => {
+    if (uiCrowdData) {
+      setPrevCrowdLevels(currentLevels => {
+        const newLevels: Record<string, CrowdLevel> = {};
+        uiCrowdData.parks.forEach(park => {
+          newLevels[park.id] = park.crowdLevel;
+        });
+        return newLevels;
+      });
+    }
+  }, [uiCrowdData]);
+  
+  // Loading state
+  if (newsletterLoading || crowdLoading) {
     return <LoadingState />;
   }
-
-  if (!data) {
+  
+  // Error state (but show partial data if available)
+  if (newsletterError && crowdError && !newsletterData && !crowdData) {
+    return <ErrorState message="Unable to load dashboard data. Please check your connection and try again." />;
+  }
+  
+  // Empty state
+  if (!uiData || !uiCrowdData) {
     return <EmptyState />;
   }
 
@@ -34,7 +77,7 @@ export default function DailyDashboard({ data, isLoading = false }: DailyDashboa
           Walt Disney World Today
         </h1>
         <p className="text-sm text-text-muted">
-          {data.date} • Updated {data.lastUpdated}
+          {uiData.topStories[0]?.timestamp || uiData.hotTiles[0]?.value || uiCrowdData.lastUpdated} • Updated {uiCrowdData.lastUpdated}
         </p>
       </header>
 
@@ -43,8 +86,17 @@ export default function DailyDashboard({ data, isLoading = false }: DailyDashboa
         <QuickMoreToggle onToggle={setIsMore} isMore={isMore} />
       </div>
 
+      {/* Error banner if partial data */}
+      {(newsletterError || crowdError) && (
+        <div className="bg-warning/10 border border-warning/20 rounded-lg p-4">
+          <p className="text-sm text-warning">
+            ⚠️ Some data may be outdated. Pull to refresh or tap to retry.
+          </p>
+        </div>
+      )}
+
       {/* Must-See Today (only when urgent items exist) */}
-      {data.mustSeeToday && (
+      {uiData.showMustSeeToday && uiData.mustSeeToday && (
         <section aria-labelledby="must-see-heading">
           <div className="flex items-center gap-2 mb-3">
             <span className="text-2xl" aria-hidden="true">
@@ -54,7 +106,7 @@ export default function DailyDashboard({ data, isLoading = false }: DailyDashboa
               Must-See Today
             </h2>
           </div>
-          <StoryCard story={data.mustSeeToday} isMore={isMore} showExpanded={true} />
+          <StoryCard story={uiData.mustSeeToday} isMore={isMore} showExpanded={true} />
         </section>
       )}
 
@@ -64,23 +116,25 @@ export default function DailyDashboard({ data, isLoading = false }: DailyDashboa
           What's Hot Today
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          {data.hotTiles.slice(0, 3).map((tile) => (
+          {uiData.hotTiles.map((tile) => (
             <HotTile key={tile.id} tile={tile} />
           ))}
         </div>
       </section>
 
-      {/* Top Stories (max 5) */}
-      <section aria-labelledby="stories-heading">
-        <h2 id="stories-heading" className="text-lg font-semibold text-text mb-3">
-          Top Stories
-        </h2>
-        <div className="flex flex-col gap-3">
-          {data.topStories.slice(0, 5).map((story) => (
-            <StoryCard key={story.id} story={story} isMore={isMore} />
-          ))}
-        </div>
-      </section>
+      {/* Top Stories (only shown when stories exist) */}
+      {uiData.showTopStories && uiData.topStories.length > 0 && (
+        <section aria-labelledby="stories-heading">
+          <h2 id="stories-heading" className="text-lg font-semibold text-text mb-3">
+            Top Stories
+          </h2>
+          <div className="flex flex-col gap-3">
+            {uiData.topStories.map((story) => (
+              <StoryCard key={story.id} story={story} isMore={isMore} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Park Snapshot Row (horizontal scroll) */}
       <section aria-labelledby="parks-heading">
@@ -88,22 +142,25 @@ export default function DailyDashboard({ data, isLoading = false }: DailyDashboa
           Park Snapshots
         </h2>
         <div className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-hide">
-          {data.parks.map((park) => (
-            <div key={park.id} className="snap-start">
-              <ParkCard park={park} />
+          {uiCrowdData.parks.map((park) => (
+            <div key={park.id} className="snap-start" style={{ animationDelay: `${park.animationDelay}ms` }}>
+              <ParkCard 
+                park={park} 
+                prevCrowdLevel={prevCrowdLevels[park.id]}
+              />
             </div>
           ))}
         </div>
       </section>
 
-      {/* Resort Spotlight (1-2 blurbs) */}
-      {data.resortSpotlight.length > 0 && (
+      {/* Resort Spotlight (only shown when blurbs exist) */}
+      {uiData.showResortSpotlight && uiData.resortSpotlight.length > 0 && (
         <section aria-labelledby="resort-heading">
           <h2 id="resort-heading" className="text-lg font-semibold text-text mb-3">
             Resort Spotlight
           </h2>
           <div className="flex flex-col gap-3">
-            {data.resortSpotlight.slice(0, 2).map((blurb) => (
+            {uiData.resortSpotlight.map((blurb) => (
               <ResortBlurb key={blurb.id} blurb={blurb} />
             ))}
           </div>

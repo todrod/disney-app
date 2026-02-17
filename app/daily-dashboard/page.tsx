@@ -1,26 +1,19 @@
 "use client";
 
-import { useEffect, useState } from 'react';
 import DailyDashboard from '@/components/dashboard/DailyDashboard';
-import { sampleDailyDashboardData } from '@/data/daily-dashboard-sample-data';
+
+/**
+ * Daily Dashboard Page
+ * Renders the Disney Daily Dashboard with live data fetching
+ * 
+ * The DailyDashboard component now handles all data fetching internally
+ * using custom hooks with 5-minute client-side caching.
+ */
 
 export default function DailyDashboardPage() {
-  const [data, setData] = useState<typeof sampleDailyDashboardData | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate loading data
-    const timer = setTimeout(() => {
-      setData(sampleDailyDashboardData);
-      setIsLoading(false);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <main className="min-h-screen lg:pl-64 bg-bg text-text">
-      <DailyDashboard data={data} isLoading={isLoading} />
+      <DailyDashboard />
     </main>
   );
 }

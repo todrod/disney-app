@@ -1,10 +1,12 @@
 "use client";
 
-import { ParkSnapshot } from '@/data/daily-dashboard-schema';
+import { ParkSnapshot, CrowdLevel } from '@/data/daily-dashboard-schema';
 import CrowdMeter from './CrowdMeter';
+import { getCrowdLevelChange, getCrowdMeterClasses } from '@/lib/dashboard/crowdsToUI';
 
 interface ParkCardProps {
   park: ParkSnapshot;
+  prevCrowdLevel?: CrowdLevel;
 }
 
 const parkColors: Record<ParkSnapshot['color'], string> = {
@@ -27,10 +29,17 @@ const statusLabels: Record<ParkSnapshot['status'], string> = {
   maintenance: 'Maintenance',
 };
 
-export default function ParkCard({ park }: ParkCardProps) {
+export default function ParkCard({ park, prevCrowdLevel }: ParkCardProps) {
   const headerColor = parkColors[park.color];
   const borderColor = parkBorderColors[park.color];
   const statusColor = park.status === 'open' ? 'text-success' : 'text-danger';
+
+  // Calculate crowd level change for animation
+  const { changed: crowdChanged, direction: crowdDirection } = getCrowdLevelChange(
+    prevCrowdLevel,
+    park.crowdLevel
+  );
+  const meterClasses = getCrowdMeterClasses(crowdChanged, crowdDirection);
 
   return (
     <article
@@ -57,9 +66,14 @@ export default function ParkCard({ park }: ParkCardProps) {
         )}
       </div>
 
-      {/* Crowd meter */}
-      <div className="mb-4">
-        <CrowdMeter value={park.crowdValue} label={park.crowdLabel} />
+      {/* Crowd meter with animation */}
+      <div className={`mb-4 ${meterClasses}`}>
+        <CrowdMeter 
+          value={park.crowdValue} 
+          label={park.crowdLabel} 
+          animate={crowdChanged}
+          direction={crowdDirection}
+        />
       </div>
 
       {/* Headline */}
