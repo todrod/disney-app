@@ -19,43 +19,87 @@ export default function WaitTimes({ queueTimesId }: WaitTimesProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [lastUpdate, setLastUpdate] = useState<string>("");
+  const [cachedMode, setCachedMode] = useState(false);
+  const cacheKey = `wait-times-cache-${queueTimesId}`;
 
-  useEffect(() => {
-    async function fetchWaitTimes() {
+  async function fetchWaitTimes() {
+    setLoading(true);
+    setError(null);
+    setCachedMode(false);
+    const url = `https://queue-times.com/parks/${queueTimesId}/queue_times.json`;
+    let data: any = null;
+    let lastErr: unknown = null;
+
+    for (let attempt = 1; attempt <= 3; attempt += 1) {
       try {
-        setLoading(true);
-        setError(null);
-        
-        const response = await fetch(
-          `https://queue-times.com/parks/${queueTimesId}/queue_times.json`
-        );
-        
-        if (!response.ok) {
-          throw new Error("Failed to fetch wait times");
-        }
-        
-        const data = await response.json();
-        
-        // Filter and sort rides: show only open rides, sort by wait time
-        const openRides = data.rides
-          .filter((ride: Ride) => ride.is_open && ride.wait_time !== null)
-          .sort((a: Ride, b: Ride) => (b.wait_time || 0) - (a.wait_time || 0));
-        
-        setRides(openRides);
-        setLastUpdate(new Date().toLocaleTimeString());
+        const response = await fetch(url, { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        data = await response.json();
+        break;
       } catch (err) {
-        setError("Unable to load wait times. Please try again later.");
-        console.error("Wait times error:", err);
-      } finally {
-        setLoading(false);
+        lastErr = err;
+        if (attempt < 3) {
+          await new Promise((resolve) => setTimeout(resolve, 700 * attempt));
+        }
       }
     }
 
-    fetchWaitTimes();
-    
-    // Refresh every 5 minutes
-    const interval = setInterval(fetchWaitTimes, 5 * 60 * 1000);
-    
+    try {
+      if (!data || !Array.isArray(data.rides)) {
+        throw lastErr || new Error("Invalid wait-time payload");
+      }
+
+      const openRides = data.rides
+        .filter((ride: Ride) => ride.is_open && ride.wait_time !== null)
+        .sort((a: Ride, b: Ride) => (b.wait_time || 0) - (a.wait_time || 0));
+
+      const now = new Date().toLocaleTimeString();
+      setRides(openRides);
+      setLastUpdate(now);
+      localStorage.setItem(
+        cacheKey,
+        JSON.stringify({
+          rides: openRides,
+          cachedAt: now,
+        })
+      );
+      return;
+    } catch (err) {
+      console.error("Wait times error:", err || lastErr);
+    }
+
+    const cachedRaw = localStorage.getItem(cacheKey);
+    if (cachedRaw) {
+      try {
+        const cached = JSON.parse(cachedRaw);
+        if (Array.isArray(cached.rides)) {
+          setRides(cached.rides);
+          setLastUpdate(cached.cachedAt || "Unknown");
+          setCachedMode(true);
+          setError(
+            `Wait times unavailable - park may be closed or data updating. Showing last cached data from ${cached.cachedAt || "earlier"}.`
+          );
+          return;
+        }
+      } catch {
+        // Ignore malformed cache and show live-data error below.
+      }
+    }
+
+    setError(
+      "Wait times unavailable - park may be closed or data updating. Please try again."
+    );
+    setRides([]);
+    setLastUpdate("");
+    setCachedMode(false);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    fetchWaitTimes().finally(() => setLoading(false));
+    const interval = setInterval(() => {
+      fetchWaitTimes().finally(() => setLoading(false));
+    }, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, [queueTimesId]);
 
@@ -72,9 +116,18 @@ export default function WaitTimes({ queueTimesId }: WaitTimesProps) {
     return (
       <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-xl">
         <p className="text-yellow-800 font-medium">{error}</p>
-        <p className="text-sm text-yellow-600 mt-2">
-          💡 Tip: Wait times may be unavailable when the park is closed
-        </p>
+        <button
+          type="button"
+          onClick={() => fetchWaitTimes().finally(() => setLoading(false))}
+          className="mt-3 min-h-[44px] px-4 py-2 rounded-lg bg-yellow-100 text-yellow-900 font-semibold hover:bg-yellow-200 transition-colors"
+        >
+          Retry
+        </button>
+        {cachedMode && (
+          <p className="text-sm text-yellow-700 mt-2">
+            Last updated: {lastUpdate}
+          </p>
+        )}
       </div>
     );
   }

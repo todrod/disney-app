@@ -1,0 +1,236 @@
+{
+  "generated_at": "2026-02-17T10:00:00.000Z",
+  "home": {
+    "mustSee": [
+      {
+        "id": "home-must-1",
+        "category": "event_alert",
+        "urgency": "must_see_today",
+        "park": "HOME",
+        "short": "Storm timing could affect evening fireworks.",
+        "long": "A moving weather window may delay or cancel select nighttime spectaculars. Recheck the app after 6:00 PM.",
+        "updated_at": "2026-02-17T09:45:00.000Z",
+        "confidence": "high"
+      }
+    ],
+    "hotTiles": [
+      {
+        "id": "home-hot-event",
+        "category": "event_alert",
+        "urgency": "normal",
+        "park": "HOME",
+        "short": "Festival performances start early at EPCOT.",
+        "long": "Festival stage schedules shifted 30 minutes earlier this morning.",
+        "updated_at": "2026-02-17T09:00:00.000Z",
+        "confidence": "high"
+      },
+      {
+        "id": "home-hot-merch",
+        "category": "limited_merch",
+        "urgency": "normal",
+        "park": "HOME",
+        "short": "Two popcorn bucket restocks reported.",
+        "long": "Cast members confirmed new stock in MK and DHS shops before noon.",
+        "updated_at": "2026-02-17T09:10:00.000Z",
+        "confidence": "med"
+      }
+    ],
+    "topStories": [
+      {
+        "id": "story-1",
+        "category": "event_alert",
+        "urgency": "normal",
+        "park": "MK",
+        "short": "TRON opening rush is peaking before lunch.",
+        "long": "Use standby later in the day when posted waits historically settle by 2 PM.",
+        "updated_at": "2026-02-17T08:50:00.000Z",
+        "confidence": "high"
+      },
+      {
+        "id": "story-2",
+        "category": "limited_merch",
+        "urgency": "normal",
+        "park": "EPCOT",
+        "short": "Figment festival merch moved to mobile checkout lane.",
+        "long": "The highest-demand items are now routed through a separate register line.",
+        "updated_at": "2026-02-17T08:40:00.000Z",
+        "confidence": "high"
+      },
+      {
+        "id": "story-3",
+        "category": "entertainment",
+        "urgency": "normal",
+        "park": "DHS",
+        "short": "Indiana Jones first show started at full capacity.",
+        "long": "Early arrival is recommended for center-section seating this morning.",
+        "updated_at": "2026-02-17T08:30:00.000Z",
+        "confidence": "med"
+      },
+      {
+        "id": "story-4",
+        "category": "food",
+        "urgency": "normal",
+        "park": "AK",
+        "short": "Satu'li Canteen mobile order windows reopened.",
+        "long": "Breakfast mobile ordering resumed after a short POS outage.",
+        "updated_at": "2026-02-17T08:20:00.000Z",
+        "confidence": "med"
+      },
+      {
+        "id": "story-5",
+        "category": "other",
+        "urgency": "normal",
+        "park": "HOME",
+        "short": "Bus routes adjusted for race weekend road closures.",
+        "long": "Temporary reroutes are active for select resort loops through midday.",
+        "updated_at": "2026-02-17T08:10:00.000Z",
+        "confidence": "med"
+      }
+    ],
+    "parksSummary": [
+      { "park": "MK", "headline": "TRON and Space Mountain both trending high.", "updated_at": "2026-02-17T09:15:00.000Z" },
+      { "park": "EPCOT", "headline": "Festival crowds concentrated in World Showcase.", "updated_at": "2026-02-17T09:15:00.000Z" },
+      { "park": "DHS", "headline": "Galaxy's Edge wait times climbing steadily.", "updated_at": "2026-02-17T09:15:00.000Z" },
+      { "park": "AK", "headline": "Animal Kingdom remains the lightest crowd option.", "updated_at": "2026-02-17T09:15:00.000Z" }
+    ],
+    "resortsBlurb": [
+      {
+        "id": "resort-home-1",
+        "category": "other",
+        "urgency": "normal",
+        "park": "RESORTS",
+        "short": "Monorail transfer times are running 10-15 minutes longer.",
+        "long": "Expect additional platform hold at TTC due to intermittent train spacing.",
+        "updated_at": "2026-02-17T09:00:00.000Z",
+        "confidence": "high"
+      },
+      {
+        "id": "resort-home-2",
+        "category": "food",
+        "urgency": "normal",
+        "park": "RESORTS",
+        "short": "Polynesian quick service reopened after morning delay.",
+        "long": "Captain Cook's has resumed normal ordering and walk-up availability.",
+        "updated_at": "2026-02-17T08:55:00.000Z",
+        "confidence": "med"
+      }
+    ]
+  },
+  "parks": {
+    "MK": {
+      "todayVibe": "High-energy morning with major coaster demand.",
+      "mustSee": [
+        {
+          "id": "mk-must-1",
+          "category": "event_alert",
+          "urgency": "must_see_today",
+          "park": "MK",
+          "short": "Mickey's Philharmagic operating with reduced capacity.",
+          "long": "One theater bank is temporarily offline, increasing turnover times.",
+          "updated_at": "2026-02-17T09:20:00.000Z",
+          "confidence": "high"
+        }
+      ],
+      "hot": [
+        {
+          "id": "mk-hot-event",
+          "category": "event_alert",
+          "urgency": "normal",
+          "park": "MK",
+          "short": "Festival of Fantasy route adjusted near Frontierland.",
+          "long": "Viewing zones shifted slightly due to parade operations support.",
+          "updated_at": "2026-02-17T09:05:00.000Z",
+          "confidence": "med"
+        },
+        {
+          "id": "mk-hot-merch",
+          "category": "limited_merch",
+          "urgency": "normal",
+          "park": "MK",
+          "short": "Castle popcorn bucket available at two carts.",
+          "long": "Stock remains limited and may sell out before late afternoon.",
+          "updated_at": "2026-02-17T09:06:00.000Z",
+          "confidence": "high"
+        }
+      ],
+      "headlines": [
+        {
+          "id": "mk-h-1",
+          "category": "entertainment",
+          "urgency": "normal",
+          "park": "MK",
+          "short": "Country Bears queue moved to overflow lane.",
+          "long": "Entry cast members are routing guests to side access for faster loading.",
+          "updated_at": "2026-02-17T08:45:00.000Z",
+          "confidence": "med"
+        }
+      ],
+      "resortBlurbs": [
+        {
+          "id": "mk-r-1",
+          "category": "other",
+          "urgency": "normal",
+          "park": "RESORTS",
+          "short": "Contemporary walkway security line extended by 5 minutes.",
+          "long": "Bag checks are moving steadily but with minor backup at rope drop.",
+          "updated_at": "2026-02-17T08:35:00.000Z",
+          "confidence": "med"
+        }
+      ]
+    },
+    "EPCOT": {
+      "todayVibe": "Festival-heavy foot traffic with concentrated peaks.",
+      "mustSee": [],
+      "hot": [],
+      "headlines": [
+        {
+          "id": "ep-h-1",
+          "category": "event_alert",
+          "urgency": "normal",
+          "park": "EPCOT",
+          "short": "Festival stage lineup shifted due to weather hold.",
+          "long": "First performance resumed with adjusted times posted near America Gardens.",
+          "updated_at": "2026-02-17T08:50:00.000Z",
+          "confidence": "high"
+        }
+      ],
+      "resortBlurbs": []
+    },
+    "DHS": {
+      "todayVibe": "Steady build toward afternoon demand in Galaxy's Edge.",
+      "mustSee": [],
+      "hot": [],
+      "headlines": [
+        {
+          "id": "dhs-h-1",
+          "category": "crowds",
+          "urgency": "normal",
+          "park": "DHS",
+          "short": "Rise of the Resistance hit a 95-minute peak.",
+          "long": "Single rider alternatives are limited; Genie+ windows moved quickly.",
+          "updated_at": "2026-02-17T09:10:00.000Z",
+          "confidence": "med"
+        }
+      ],
+      "resortBlurbs": []
+    },
+    "AK": {
+      "todayVibe": "Most balanced park this morning with easier standby flow.",
+      "mustSee": [],
+      "hot": [],
+      "headlines": [
+        {
+          "id": "ak-h-1",
+          "category": "food",
+          "urgency": "normal",
+          "park": "AK",
+          "short": "Harambe Market opened all windows early.",
+          "long": "Mobile order slots remained open through late breakfast period.",
+          "updated_at": "2026-02-17T09:00:00.000Z",
+          "confidence": "med"
+        }
+      ],
+      "resortBlurbs": []
+    }
+  }
+}

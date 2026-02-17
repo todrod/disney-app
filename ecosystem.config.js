@@ -11,11 +11,16 @@ module.exports = {
     max_memory_restart: '1G',
     env: {
       NODE_ENV: 'production',
-      PORT: 3000
+      PORT: 3000,
+      HOSTNAME: '0.0.0.0'
     },
     error_file: '/var/log/disney-app/error.log',
     out_file: '/var/log/disney-app/out.log',
     log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
-    merge_logs: true
+    merge_logs: true,
+    // Graceful shutdown
+    kill_timeout: 5000,
+    wait_ready: true,
+    listen_timeout: 10000
   }]
 };

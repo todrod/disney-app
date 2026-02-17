@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-02-17T10:00:00.000Z",
+  "parks": {
+    "MK": {
+      "park": "MK",
+      "score": 8,
+      "label": "High",
+      "avg_wait_min": 52,
+      "data_quality": "good",
+      "generated_at": "2026-02-17T09:58:00.000Z"
+    },
+    "EPCOT": {
+      "park": "EPCOT",
+      "score": 7,
+      "label": "Moderate-High",
+      "avg_wait_min": 41,
+      "data_quality": "good",
+      "generated_at": "2026-02-17T09:58:00.000Z"
+    },
+    "DHS": {
+      "park": "DHS",
+      "score": 8,
+      "label": "High",
+      "avg_wait_min": 56,
+      "data_quality": "good",
+      "generated_at": "2026-02-17T09:58:00.000Z"
+    },
+    "AK": {
+      "park": "AK",
+      "score": 5,
+      "label": "Moderate",
+      "avg_wait_min": 31,
+      "data_quality": "limited",
+      "generated_at": "2026-02-17T09:58:00.000Z"
+    }
+  }
+}

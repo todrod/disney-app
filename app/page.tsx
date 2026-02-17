@@ -3,6 +3,7 @@ import ParkCard from "@/components/ParkCard";
 import QuickNavigation from "@/components/QuickNavigation";
 import FastTravel from "@/components/FastTravel";
 import ThemeSettings from "@/components/ThemeSettings";
+import SearchBar from "@/components/SearchBar";
 
 const parks = [
   {
@@ -50,17 +51,18 @@ export default function Home() {
            HERO SECTION - Landio Style
            ======================================== */}
       <header className="border-b border-border bg-surface">
-        <div className="container mx-auto max-w-5xl px-4 py-12 md:py-16">
-          {/* Kicker + Headline + Subhead hierarchy */}
-          <div className="mb-8">
-            <span className="pill-accent landio-kicker">WELCOME</span>
+        <div className="container mx-auto max-w-5xl px-4 py-12 md:py-16 text-center">
+          <div className="mb-6 flex justify-center">
+            <img src="/logo.jpg" alt="The Goofy Trooper" className="h-52 md:h-64 w-auto object-contain" />
           </div>
-          <div className="mb-6">
-            <img src="/logo.jpg" alt="Disney Parks Guide" className="h-40 md:h-48 w-auto object-contain" />
+          <div className="mt-4">
+            <Link href="/daily-dashboard" className="btn-primary inline-flex items-center gap-2 min-h-[44px] px-4 py-2 rounded-lg">
+              📰 Walt Disney World Today Dashboard
+            </Link>
           </div>
-          <p className="text-lg md:text-xl text-text-muted leading-relaxed max-w-2xl">
-            Your quick reference for merch, wait times & more
-          </p>
+          <div className="mt-6">
+            <SearchBar />
+          </div>
         </div>
       </header>
 
@@ -68,8 +70,32 @@ export default function Home() {
            PARKS GRID SECTION - Landio Style
            ======================================== */}
       <div className="container mx-auto px-4 py-10 md:py-12 lg:py-14 max-w-5xl">
+        {/* ========================================
+             HOMEPAGE FEATURE CARDS
+             ======================================== */}
+        <section className="mb-10 md:mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <a href="#parks-grid" className="card-landio p-5 hover:shadow-md transition-shadow">
+              <p className="font-semibold text-text text-lg">⏱️ Live Wait Times</p>
+              <p className="text-text-muted text-sm mt-1">Select a park to view live attraction wait times.</p>
+            </a>
+            <a href="#parks-grid" className="card-landio p-5 hover:shadow-md transition-shadow">
+              <p className="font-semibold text-text text-lg">⭐ Track Rare Merch</p>
+              <p className="text-text-muted text-sm mt-1">Find limited edition items by park.</p>
+            </a>
+            <a href="#fast-travel" className="card-landio p-5 hover:shadow-md transition-shadow">
+              <p className="font-semibold text-text text-lg">✈️ Fast Travel</p>
+              <p className="text-text-muted text-sm mt-1">Jump to quick routing between Disney locations.</p>
+            </a>
+            <a href="#parks-grid" className="card-landio p-5 hover:shadow-md transition-shadow">
+              <p className="font-semibold text-text text-lg">🔔 Virtual Queue Alerts</p>
+              <p className="text-text-muted text-sm mt-1">Choose a park for virtual queue reminders.</p>
+            </a>
+          </div>
+        </section>
+
         {/* Section header with kicker */}
-        <div className="section-header">
+        <div id="parks-grid" className="section-header">
           <span className="pill-accent landio-kicker">PARKS</span>
           <h2 className="section-title">Select a Park</h2>
           <p className="section-subhead">Explore all four Disney World parks</p>
@@ -87,7 +113,7 @@ export default function Home() {
         {/* ========================================
              FAST TRAVEL SECTION - Landio Style
              ======================================== */}
-        <div className="card-landio card-landio-featured mt-12 md:mt-16">
+        <div id="fast-travel" className="card-landio card-landio-featured mt-12 md:mt-16">
           {/* Section header with kicker */}
           <div className="section-header">
             <span className="pill-accent2 landio-kicker">FAST TRAVEL</span>

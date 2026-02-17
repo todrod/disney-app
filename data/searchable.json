@@ -1,0 +1,18 @@
+[
+  { "id": "mk-a-1", "name": "Space Mountain", "park": "Magic Kingdom", "type": "attraction", "slug": "magic-kingdom" },
+  { "id": "mk-a-2", "name": "Seven Dwarfs Mine Train", "park": "Magic Kingdom", "type": "attraction", "slug": "magic-kingdom" },
+  { "id": "mk-a-3", "name": "Haunted Mansion", "park": "Magic Kingdom", "type": "attraction", "slug": "magic-kingdom" },
+  { "id": "ep-a-1", "name": "Frozen Ever After", "park": "EPCOT", "type": "attraction", "slug": "epcot" },
+  { "id": "ep-a-2", "name": "Soarin'", "park": "EPCOT", "type": "attraction", "slug": "epcot" },
+  { "id": "hs-a-1", "name": "Rise of the Resistance", "park": "Hollywood Studios", "type": "attraction", "slug": "hollywood-studios" },
+  { "id": "ak-a-1", "name": "Avatar Flight of Passage", "park": "Animal Kingdom", "type": "attraction", "slug": "animal-kingdom" },
+  { "id": "mk-s-1", "name": "Emporium", "park": "Magic Kingdom", "type": "shop", "slug": "magic-kingdom" },
+  { "id": "ep-s-1", "name": "Creations Shop", "park": "EPCOT", "type": "shop", "slug": "epcot" },
+  { "id": "hs-s-1", "name": "Tatooine Traders", "park": "Hollywood Studios", "type": "shop", "slug": "hollywood-studios" },
+  { "id": "mk-m-1", "name": "Cinderella Castle Popcorn Bucket", "park": "Magic Kingdom", "type": "merch", "slug": "magic-kingdom" },
+  { "id": "ep-m-1", "name": "Figment Popcorn Bucket", "park": "EPCOT", "type": "merch", "slug": "epcot" },
+  { "id": "hs-m-1", "name": "Millennium Falcon Popcorn Bucket", "park": "Hollywood Studios", "type": "merch", "slug": "hollywood-studios" },
+  { "id": "mk-f-1", "name": "Dole Whip", "park": "Magic Kingdom", "type": "restaurant", "slug": "magic-kingdom" },
+  { "id": "ep-f-1", "name": "Space 220", "park": "EPCOT", "type": "restaurant", "slug": "epcot" },
+  { "id": "ak-f-1", "name": "Satu'li Canteen", "park": "Animal Kingdom", "type": "restaurant", "slug": "animal-kingdom" }
+]

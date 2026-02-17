@@ -93,6 +93,14 @@ export default async function ParkPage({ params }: { params: { slug: string } })
       </div>
 
       <div className="container mx-auto px-4 py-8 md:py-10 lg:py-12 max-w-4xl space-y-8">
+        <nav aria-label="Breadcrumb" className="text-sm text-text-muted">
+          <Link href="/" className="hover:text-text">Home</Link>
+          <span className="mx-2">&gt;</span>
+          <span>Parks</span>
+          <span className="mx-2">&gt;</span>
+          <span className="text-text">{park.name}</span>
+        </nav>
+
         {/* ========================================
              PARK HOURS SECTION
              ======================================== */}
@@ -134,7 +142,7 @@ export default async function ParkPage({ params }: { params: { slug: string } })
         {/* ========================================
              LIMITED EDITION MERCH SECTION - Landio Style
              ======================================== */}
-        <section className="card-landio card-landio-featured">
+        <section id="merch" className="card-landio card-landio-featured">
           <div className="section-header border-b border-border pb-4">
             <span className="pill-warning landio-kicker">LIMITED EDITION</span>
             <h2 className="text-display-xl font-bold font-display text-text flex items-center gap-3">

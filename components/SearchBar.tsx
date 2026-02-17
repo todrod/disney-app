@@ -2,46 +2,17 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import searchableIndex from "@/data/searchable.json";
 
 interface SearchResult {
   id: string;
-  type: "Attraction" | "Food" | "Merch";
+  type: "attraction" | "shop" | "merch" | "restaurant";
   name: string;
   park: string;
   slug: string;
 }
 
-// Search result data
-const searchIndex: SearchResult[] = [
-  // Attractions
-  { id: "mk-1", type: "Attraction", name: "Space Mountain", park: "Magic Kingdom", slug: "magic-kingdom" },
-  { id: "mk-2", type: "Attraction", name: "Seven Dwarfs Mine Train", park: "Magic Kingdom", slug: "magic-kingdom" },
-  { id: "mk-3", type: "Attraction", name: "Pirates of the Caribbean", park: "Magic Kingdom", slug: "magic-kingdom" },
-  { id: "mk-4", type: "Attraction", name: "Haunted Mansion", park: "Magic Kingdom", slug: "magic-kingdom" },
-  { id: "ep-1", type: "Attraction", name: "Frozen Ever After", park: "EPCOT", slug: "epcot" },
-  { id: "ep-2", type: "Attraction", name: "Soarin'", park: "EPCOT", slug: "epcot" },
-  { id: "ep-3", type: "Attraction", name: "Test Track", park: "EPCOT", slug: "epcot" },
-  { id: "hs-1", type: "Attraction", name: "Star Wars: Rise of the Resistance", park: "Hollywood Studios", slug: "hollywood-studios" },
-  { id: "hs-2", type: "Attraction", name: "TRON Lightcycle/Run", park: "Magic Kingdom", slug: "magic-kingdom" },
-  { id: "ak-1", type: "Attraction", name: "Avatar Flight of Passage", park: "Animal Kingdom", slug: "animal-kingdom" },
-  { id: "ak-2", type: "Attraction", name: "Expedition Everest", park: "Animal Kingdom", slug: "animal-kingdom" },
-
-  // Food
-  { id: "mk-f1", type: "Food", name: "Dole Whip", park: "Magic Kingdom", slug: "magic-kingdom" },
-  { id: "mk-f2", type: "Food", name: "Churro", park: "All Parks", slug: "magic-kingdom" },
-  { id: "mk-f3", type: "Food", name: "Cinderella's Royal Table", park: "Magic Kingdom", slug: "magic-kingdom" },
-  { id: "ep-f1", type: "Food", name: "Les Halles Boulangerie-Patisserie", park: "EPCOT", slug: "epcot" },
-  { id: "ep-f2", type: "Food", name: "Space 220", park: "EPCOT", slug: "epcot" },
-  { id: "hs-f1", type: "Food", name: "Docking Bay 7", park: "Hollywood Studios", slug: "hollywood-studios" },
-  { id: "ak-f1", type: "Food", name: "Satu'li Canteen", park: "Animal Kingdom", slug: "animal-kingdom" },
-
-  // Merch
-  { id: "mk-m1", type: "Merch", name: "Mickey Ears", park: "All Parks", slug: "magic-kingdom" },
-  { id: "mk-m2", type: "Merch", name: "Cinderella Castle Souvenir", park: "Magic Kingdom", slug: "magic-kingdom" },
-  { id: "ep-m1", type: "Merch", name: "Figment Plush", park: "EPCOT", slug: "epcot" },
-  { id: "hs-m1", type: "Merch", name: "Lightsaber", park: "Hollywood Studios", slug: "hollywood-studios" },
-  { id: "ak-m1", type: "Merch", name: "Avatar Plush", park: "Animal Kingdom", slug: "animal-kingdom" },
-];
+const searchIndex = searchableIndex as SearchResult[];
 
 export default function SearchBar() {
   const [query, setQuery] = useState("");
@@ -65,9 +36,10 @@ export default function SearchBar() {
   }, [query]);
 
   const groupedResults = {
-    Attractions: results.filter((r) => r.type === "Attraction"),
-    Food: results.filter((r) => r.type === "Food"),
-    Merch: results.filter((r) => r.type === "Merch"),
+    Attractions: results.filter((r) => r.type === "attraction"),
+    Food: results.filter((r) => r.type === "restaurant"),
+    Shops: results.filter((r) => r.type === "shop"),
+    Merch: results.filter((r) => r.type === "merch"),
   };
 
   const handleBlur = (e: React.FocusEvent) => {
@@ -100,7 +72,7 @@ export default function SearchBar() {
           onBlur={handleBlur}
           onFocus={() => query.length >= 2 && setIsOpen(true)}
           placeholder="Search attractions, shows, food, and merch"
-          className="input-landio input-search pl-12 py-4 shadow-soft text-text placeholder:text-text-faint"
+          className="input-landio input-search pl-12 py-4 min-h-[44px] text-base shadow-soft text-text placeholder:text-text-faint"
           aria-label="Search Disney attractions, food, and merch"
           aria-expanded={isOpen}
           aria-haspopup="listbox"
