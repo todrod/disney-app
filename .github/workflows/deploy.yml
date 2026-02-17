@@ -72,12 +72,15 @@ jobs:
           pm2 save
           systemctl restart nginx
           for i in 1 2 3 4 5; do
-            if curl -fsS http://127.0.0.1:8000 >/dev/null && curl -fsSI http://127.0.0.1 >/dev/null; then
+            if curl -fsS http://127.0.0.1:8000 >/dev/null; then
               echo "Deploy successful"
               exit 0
             fi
+            echo "Health check attempt $i failed, retrying..."
             sleep 2
           done
-          echo "Health checks failed"
+          echo "Health checks failed on 127.0.0.1:8000"
+          pm2 status || true
+          pm2 logs disney-app --lines 50 --nostream || true
           exit 1
           EOF_REMOTE
