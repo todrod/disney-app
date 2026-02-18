@@ -12,6 +12,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
       - name: Validate required secrets
@@ -32,9 +33,14 @@ jobs:
           case "$PORT" in
             ''|*[!0-9]*) echo "Invalid VPS_PORT: must be numeric"; exit 1 ;;
           esac
+          printf '%s\n' "$SSH_KEY" | head -n 1 | grep -q "BEGIN OPENSSH PRIVATE KEY" || {
+            echo "Invalid VPS_SSH_KEY format (expected OpenSSH private key)."
+            exit 1
+          }
           echo "DEPLOY_HOST=$HOST" >> "$GITHUB_ENV"
           echo "DEPLOY_USER=$USER" >> "$GITHUB_ENV"
           echo "DEPLOY_PORT=$PORT" >> "$GITHUB_ENV"
+          echo "Deploy target validated (host/user/port)."
 
       - name: Prepare SSH key
         env:
@@ -43,20 +49,35 @@ jobs:
           set -euo pipefail
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
+          : > ~/.ssh/known_hosts
           printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/vps_key
           chmod 600 ~/.ssh/vps_key
-          ssh-keyscan -p "$DEPLOY_PORT" -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
+          for i in 1 2 3; do
+            if ssh-keyscan -T 10 -p "$DEPLOY_PORT" -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts 2>/dev/null; then
+              break
+            fi
+            if [ "$i" -eq 3 ]; then
+              echo "Failed to fetch SSH host key from $DEPLOY_HOST:$DEPLOY_PORT"
+              exit 1
+            fi
+            sleep 2
+          done
+          chmod 644 ~/.ssh/known_hosts
 
-      - name: Deploy on VPS
-        env:
-          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+      - name: Preflight SSH connectivity
         run: |
           set -euo pipefail
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/vps_key
-          chmod 600 ~/.ssh/vps_key
-          ssh -i ~/.ssh/vps_key -p "$DEPLOY_PORT" -o StrictHostKeyChecking=yes "$DEPLOY_USER@$DEPLOY_HOST" <<'EOF_REMOTE'
+          ssh -i ~/.ssh/vps_key \
+            -p "$DEPLOY_PORT" \
+            -o BatchMode=yes \
+            -o ConnectTimeout=15 \
+            -o StrictHostKeyChecking=yes \
+            "$DEPLOY_USER@$DEPLOY_HOST" "echo SSH preflight OK"
+
+      - name: Deploy on VPS
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/vps_key -p "$DEPLOY_PORT" -o BatchMode=yes -o StrictHostKeyChecking=yes "$DEPLOY_USER@$DEPLOY_HOST" <<'EOF_REMOTE'
           set -euxo pipefail
           cd /var/www/disney-app
           if [ -f /root/.ssh/id_ed25519_github ]; then
