@@ -1,0 +1,12 @@
+[
+  {"id":"mk","label":"Magic Kingdom","lat":28.4177,"lng":-81.5812,"radius_m":1200},
+  {"id":"epcot","label":"EPCOT","lat":28.3747,"lng":-81.5494,"radius_m":1300},
+  {"id":"dhs","label":"Hollywood Studios","lat":28.3575,"lng":-81.5589,"radius_m":1200},
+  {"id":"ak","label":"Animal Kingdom","lat":28.3553,"lng":-81.5907,"radius_m":1500},
+  {"id":"disney-springs","label":"Disney Springs","lat":28.3702,"lng":-81.5188,"radius_m":1400},
+  {"id":"contemporary","label":"Disney's Contemporary Resort","lat":28.4147,"lng":-81.5746,"radius_m":450},
+  {"id":"polynesian","label":"Disney's Polynesian Village Resort","lat":28.4058,"lng":-81.5855,"radius_m":500},
+  {"id":"grand-floridian","label":"Disney's Grand Floridian Resort & Spa","lat":28.4112,"lng":-81.5875,"radius_m":550},
+  {"id":"riviera","label":"Disney's Riviera Resort","lat":28.3661,"lng":-81.5405,"radius_m":500},
+  {"id":"coronado","label":"Disney's Coronado Springs Resort","lat":28.3635,"lng":-81.5742,"radius_m":700}
+]

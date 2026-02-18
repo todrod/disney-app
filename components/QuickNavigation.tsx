@@ -69,6 +69,12 @@ export default function QuickNavigation({ currentPark, parkSlug }: QuickNavigati
       icon: "🍴",
       href: "/goofys-grub-grab",
     },
+    {
+      id: "group",
+      label: "Find Your Group",
+      icon: "📍",
+      href: "/group",
+    },
   ];
 
   return (
