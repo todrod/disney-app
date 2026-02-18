@@ -63,6 +63,12 @@ export default function QuickNavigation({ currentPark, parkSlug }: QuickNavigati
       icon: "📰",
       href: "/daily-dashboard",
     },
+    {
+      id: "grub-grab",
+      label: "Goofy's Grub Grab",
+      icon: "🍴",
+      href: "/goofys-grub-grab",
+    },
   ];
 
   return (

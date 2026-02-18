@@ -56,8 +56,11 @@ export default function Home() {
             <img src="/logo.jpg" alt="The Goofy Trooper" className="h-52 md:h-64 w-auto object-contain" />
           </div>
           <div className="mt-4">
-            <Link href="/daily-dashboard" className="btn-primary inline-flex items-center gap-2 min-h-[44px] px-4 py-2 rounded-lg">
+            <Link href="/daily-dashboard" className="btn-primary inline-flex items-center gap-2 min-h-[44px] px-4 py-2 rounded-lg mr-2">
               📰 Walt Disney World Today Dashboard
+            </Link>
+            <Link href="/goofys-grub-grab" className="btn-primary inline-flex items-center gap-2 min-h-[44px] px-4 py-2 rounded-lg">
+              🍴 Goofy's Grub Grab
             </Link>
           </div>
           <div className="mt-6">
