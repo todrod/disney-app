@@ -59,8 +59,11 @@ export default function Home() {
             <Link href="/daily-dashboard" className="btn-primary inline-flex items-center gap-2 min-h-[44px] px-4 py-2 rounded-lg mr-2">
               📰 Walt Disney World Today Dashboard
             </Link>
-            <Link href="/goofys-grub-grab" className="btn-primary inline-flex items-center gap-2 min-h-[44px] px-4 py-2 rounded-lg">
+            <Link href="/goofys-grub-grab" className="btn-primary inline-flex items-center gap-2 min-h-[44px] px-4 py-2 rounded-lg mr-2">
               🍴 Goofy's Grub Grab
+            </Link>
+            <Link href="/group" className="btn-primary inline-flex items-center gap-2 min-h-[44px] px-4 py-2 rounded-lg mt-2 sm:mt-0">
+              📍 Find Your Group
             </Link>
           </div>
           <div className="mt-6">
@@ -73,30 +76,6 @@ export default function Home() {
            PARKS GRID SECTION - Landio Style
            ======================================== */}
       <div className="container mx-auto px-4 py-10 md:py-12 lg:py-14 max-w-5xl">
-        {/* ========================================
-             HOMEPAGE FEATURE CARDS
-             ======================================== */}
-        <section className="mb-10 md:mb-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <a href="#parks-grid" className="card-landio p-5 hover:shadow-md transition-shadow">
-              <p className="font-semibold text-text text-lg">⏱️ Live Wait Times</p>
-              <p className="text-text-muted text-sm mt-1">Select a park to view live attraction wait times.</p>
-            </a>
-            <a href="#parks-grid" className="card-landio p-5 hover:shadow-md transition-shadow">
-              <p className="font-semibold text-text text-lg">⭐ Track Rare Merch</p>
-              <p className="text-text-muted text-sm mt-1">Find limited edition items by park.</p>
-            </a>
-            <a href="#fast-travel" className="card-landio p-5 hover:shadow-md transition-shadow">
-              <p className="font-semibold text-text text-lg">✈️ Fast Travel</p>
-              <p className="text-text-muted text-sm mt-1">Jump to quick routing between Disney locations.</p>
-            </a>
-            <a href="#parks-grid" className="card-landio p-5 hover:shadow-md transition-shadow">
-              <p className="font-semibold text-text text-lg">🔔 Virtual Queue Alerts</p>
-              <p className="text-text-muted text-sm mt-1">Choose a park for virtual queue reminders.</p>
-            </a>
-          </div>
-        </section>
-
         {/* Section header with kicker */}
         <div id="parks-grid" className="section-header">
           <span className="pill-accent landio-kicker">PARKS</span>
