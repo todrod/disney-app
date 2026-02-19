@@ -80,6 +80,16 @@ jobs:
           ssh -i ~/.ssh/vps_key -p "$DEPLOY_PORT" -o BatchMode=yes -o StrictHostKeyChecking=yes "$DEPLOY_USER@$DEPLOY_HOST" <<'EOF_REMOTE'
           set -euxo pipefail
           cd /var/www/disney-app
+          if [ ! -f .env.production ]; then
+            echo "Missing /var/www/disney-app/.env.production"
+            exit 1
+          fi
+          for key in NEXT_PUBLIC_SUPABASE_URL NEXT_PUBLIC_SUPABASE_ANON_KEY SUPABASE_SERVICE_ROLE_KEY NEXT_PUBLIC_APP_URL TELEGRAM_BOT_TOKEN; do
+            if ! grep -Eq "^${key}=" .env.production; then
+              echo "Missing required runtime key in .env.production: ${key}"
+              exit 1
+            fi
+          done
           if [ -f /root/.ssh/id_ed25519_github ]; then
             export GIT_SSH_COMMAND='ssh -i /root/.ssh/id_ed25519_github -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes'
           fi
