@@ -315,6 +315,43 @@ body.theme-park-pulse.night {
     background-color: var(--color-surface2);
     color: var(--color-text);
   }
+
+  .goofy-cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 44px;
+    padding: 0.65rem 1rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #4562f8 0%, #4f63ff 65%, #7a63ff 100%);
+    color: var(--color-text);
+    border: 1px solid rgba(120, 140, 255, 0.6);
+    font-weight: 700;
+    font-size: 0.975rem;
+    box-shadow: 0 8px 20px rgba(79, 99, 255, 0.25);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+  }
+
+  .goofy-cta-button:hover {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 10px 24px rgba(79, 99, 255, 0.35);
+    filter: brightness(1.05);
+  }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding: 0.2rem 0.65rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(79, 99, 255, 0.45);
+    background: rgba(79, 99, 255, 0.16);
+    color: #dbe4ff;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+  }
 }
 
 /* ========================================

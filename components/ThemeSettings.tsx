@@ -28,6 +28,15 @@ export default function ThemeSettings({ children }: ThemeSettingsProps) {
   const [hoverEffectsEnabled, setHoverEffectsEnabled] = useState(true);
   const [currentTimeOfDay, setCurrentTimeOfDay] = useState<TimeOfDay>("morning");
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isOpen]);
+
   // Apply theme class to body
   useEffect(() => {
     // Remove all theme classes
@@ -174,7 +183,7 @@ export default function ThemeSettings({ children }: ThemeSettingsProps) {
     <>
       {/* Settings Button */}
       <button
-        className="settings-button"
+        className="fixed top-4 right-4 z-[1200] h-12 w-12 rounded-full border border-border bg-gradient-to-br from-accent to-accent2 text-white text-2xl shadow-med transition-transform hover:scale-105"
         onClick={() => setIsOpen(true)}
         aria-label="Theme Settings"
       >
@@ -184,13 +193,17 @@ export default function ThemeSettings({ children }: ThemeSettingsProps) {
       {/* Overlay */}
       {isOpen && (
         <div
-          className="settings-overlay"
+          className="fixed inset-0 z-[1190] bg-black/70 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
         />
       )}
 
       {/* Settings Panel */}
-      <div className={`settings-panel ${isOpen ? "open" : ""}`}>
+      <div
+        className={`fixed top-0 right-0 z-[1200] h-screen w-full max-w-[350px] overflow-y-auto border-l border-border bg-surface shadow-2xl transition-transform duration-300 md:max-w-[350px] ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
         <div className="p-6">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
