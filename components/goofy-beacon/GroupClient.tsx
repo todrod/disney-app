@@ -72,26 +72,36 @@ export default function GroupClient({ initialGroupId }: GroupClientProps) {
   );
 
   async function authedFetch(path: string, init?: RequestInit) {
+    const { data } = await supabaseBrowser.auth.getSession();
+    const liveToken = data.session?.access_token;
+    if (!liveToken) {
+      throw new Error('Not authenticated. Please sign in again.');
+    }
+
     const headers = new Headers(init?.headers ?? {});
-    if (token) headers.set('Authorization', `Bearer ${token}`);
+    headers.set('Authorization', `Bearer ${liveToken}`);
     if (!headers.has('Content-Type') && init?.body) headers.set('Content-Type', 'application/json');
     return fetch(path, { ...init, headers });
   }
 
   const refreshGroups = async () => {
     if (!token) return;
-    const response = await authedFetch('/api/groups/my');
-    const data = await response.json();
-    if (!response.ok || !data.ok) {
-      setError(data.error ?? 'Failed to load groups');
-      return;
-    }
-    setGroups(data.groups ?? []);
+    try {
+      const response = await authedFetch('/api/groups/my');
+      const data = await response.json();
+      if (!response.ok || !data.ok) {
+        setError(data.error ?? 'Failed to load groups');
+        return;
+      }
+      setGroups(data.groups ?? []);
 
-    if (!selectedGroupId && data.groups?.length) {
-      setSelectedGroupId(initialGroupId && data.groups.some((item: MyGroupItem) => item.groupId === initialGroupId)
-        ? initialGroupId
-        : data.groups[0].groupId);
+      if (!selectedGroupId && data.groups?.length) {
+        setSelectedGroupId(initialGroupId && data.groups.some((item: MyGroupItem) => item.groupId === initialGroupId)
+          ? initialGroupId
+          : data.groups[0].groupId);
+      }
+    } catch (err) {
+      setError((err as Error).message || 'Failed to load groups');
     }
   };
 
