@@ -1,0 +1,36 @@
+[
+  { "fromArea": "EPCOT", "toArea": "Hollywood Studios", "mode": "skyliner", "avgMinutes": 18 },
+  { "fromArea": "EPCOT", "toArea": "EPCOT Resorts", "mode": "walk", "avgMinutes": 12 },
+  { "fromArea": "EPCOT", "toArea": "Monorail Resorts", "mode": "monorail", "avgMinutes": 26 },
+  { "fromArea": "EPCOT", "toArea": "Disney Springs", "mode": "bus", "avgMinutes": 28 },
+  { "fromArea": "EPCOT", "toArea": "Animal Kingdom", "mode": "bus", "avgMinutes": 30 },
+  { "fromArea": "EPCOT", "toArea": "Magic Kingdom", "mode": "monorail", "avgMinutes": 24 },
+  { "fromArea": "EPCOT", "toArea": "Other Resorts", "mode": "bus", "avgMinutes": 30 },
+
+  { "fromArea": "Hollywood Studios", "toArea": "EPCOT Resorts", "mode": "boat", "avgMinutes": 20 },
+  { "fromArea": "Hollywood Studios", "toArea": "Disney Springs", "mode": "bus", "avgMinutes": 24 },
+  { "fromArea": "Hollywood Studios", "toArea": "Animal Kingdom", "mode": "bus", "avgMinutes": 22 },
+  { "fromArea": "Hollywood Studios", "toArea": "Monorail Resorts", "mode": "bus", "avgMinutes": 36 },
+  { "fromArea": "Hollywood Studios", "toArea": "Magic Kingdom", "mode": "bus", "avgMinutes": 32 },
+  { "fromArea": "Hollywood Studios", "toArea": "Other Resorts", "mode": "bus", "avgMinutes": 24 },
+
+  { "fromArea": "Disney Springs", "toArea": "Monorail Resorts", "mode": "bus", "avgMinutes": 30 },
+  { "fromArea": "Disney Springs", "toArea": "EPCOT Resorts", "mode": "bus", "avgMinutes": 26 },
+  { "fromArea": "Disney Springs", "toArea": "Other Resorts", "mode": "bus", "avgMinutes": 24 },
+  { "fromArea": "Disney Springs", "toArea": "Animal Kingdom", "mode": "bus", "avgMinutes": 27 },
+  { "fromArea": "Disney Springs", "toArea": "Magic Kingdom", "mode": "bus", "avgMinutes": 35 },
+
+  { "fromArea": "Monorail Resorts", "toArea": "Magic Kingdom", "mode": "monorail", "avgMinutes": 12 },
+  { "fromArea": "Monorail Resorts", "toArea": "Other Resorts", "mode": "bus", "avgMinutes": 28 },
+  { "fromArea": "Monorail Resorts", "toArea": "EPCOT Resorts", "mode": "bus", "avgMinutes": 30 },
+  { "fromArea": "Monorail Resorts", "toArea": "Animal Kingdom", "mode": "bus", "avgMinutes": 28 },
+
+  { "fromArea": "EPCOT Resorts", "toArea": "Other Resorts", "mode": "bus", "avgMinutes": 30 },
+  { "fromArea": "EPCOT Resorts", "toArea": "Animal Kingdom", "mode": "bus", "avgMinutes": 30 },
+  { "fromArea": "EPCOT Resorts", "toArea": "Magic Kingdom", "mode": "bus", "avgMinutes": 34 },
+
+  { "fromArea": "Other Resorts", "toArea": "Animal Kingdom", "mode": "bus", "avgMinutes": 22 },
+  { "fromArea": "Other Resorts", "toArea": "Magic Kingdom", "mode": "bus", "avgMinutes": 28 },
+
+  { "fromArea": "Magic Kingdom", "toArea": "Animal Kingdom", "mode": "bus", "avgMinutes": 28 }
+]

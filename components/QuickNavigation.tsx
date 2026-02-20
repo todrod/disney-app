@@ -64,6 +64,12 @@ export default function QuickNavigation({ currentPark, parkSlug }: QuickNavigati
       href: "/daily-dashboard",
     },
     {
+      id: "grog-trot",
+      label: "Goofy's Grog Trot",
+      icon: "🍹",
+      href: "/goofys-grog-trot",
+    },
+    {
       id: "grub-grab",
       label: "Goofy's Grub Grab",
       icon: "🍴",
@@ -74,6 +80,12 @@ export default function QuickNavigation({ currentPark, parkSlug }: QuickNavigati
       label: "Find Your Group",
       icon: "📍",
       href: "/group",
+    },
+    {
+      id: "crawl-dashboard",
+      label: "Crawl Dashboard",
+      icon: "📋",
+      href: "/dashboard",
     },
   ];
 
