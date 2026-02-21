@@ -96,8 +96,28 @@ jobs:
           git fetch origin
           git checkout main
           git reset --hard origin/main
-          rm -rf .next
-          npm ci
+          pm2 stop disney-app >/dev/null 2>&1 || true
+          install_ok=0
+          for attempt in 1 2; do
+            echo "Clean install attempt ${attempt}..."
+            rm -rf node_modules .next
+            npm cache verify || true
+            if npm ci --no-audit --no-fund; then
+              if [ -f node_modules/next/dist/compiled/babel/code-frame/index.js ]; then
+                install_ok=1
+                break
+              fi
+              echo "Next runtime module missing after npm ci. Retrying..."
+            else
+              echo "npm ci failed. Retrying..."
+            fi
+            sleep 2
+          done
+          if [ "$install_ok" -ne 1 ]; then
+            echo "Dependency install failed after retries."
+            exit 1
+          fi
+          mkdir -p .next/cache/webpack || true
           npm run build
           pm2 delete disney-app >/dev/null 2>&1 || true
           pm2 start /var/www/disney-app/node_modules/next/dist/bin/next --name disney-app -- start -p 8000
