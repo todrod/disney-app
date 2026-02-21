@@ -103,11 +103,11 @@ jobs:
             rm -rf node_modules .next
             npm cache verify || true
             if npm ci --no-audit --no-fund; then
-              if [ -f node_modules/next/dist/compiled/babel/code-frame/index.js ]; then
+              if node -e "require.resolve('next/dist/compiled/babel/code-frame')" >/dev/null 2>&1; then
                 install_ok=1
                 break
               fi
-              echo "Next runtime module missing after npm ci. Retrying..."
+              echo "Next runtime module resolution failed after npm ci. Retrying..."
             else
               echo "npm ci failed. Retrying..."
             fi
